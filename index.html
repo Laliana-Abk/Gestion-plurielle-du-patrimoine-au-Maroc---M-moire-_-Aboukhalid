@@ -5,30 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Patrimoine Marocain — Tableau de bord analytique</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sand: #f0e6d0;
-    --sand-light: #f9f3e8;
-    --terracotta: #c0623a;
-    --terracotta-dark: #9a4828;
-    --terracotta-light: #e8876a;
-    --mosaic: #2e6b6b;
-    --mosaic-light: #4a9999;
-    --gold: #c9973f;
-    --gold-light: #e8c06a;
-    --ink: #1a1208;
-    --ink-soft: #3d2e1a;
-    --ink-muted: #7a6a52;
-    --cream: #faf6ef;
+    --sand: #e8e0d0;
+    --sand-light: #f5f2ec;
+    --terracotta: #7c1c2e;
+    --terracotta-dark: #5a1220;
+    --terracotta-light: #a83d52;
+    --mosaic: #2d5c3e;
+    --mosaic-light: #4a8c62;
+    --gold: #c8b98a;
+    --gold-light: #ddd0a8;
+    --ink: #1a1a1a;
+    --ink-soft: #2e2e2e;
+    --ink-muted: #6b6b6b;
+    --cream: #f7f4ee;
     --white: #ffffff;
-    --border: rgba(192,98,58,0.15);
+    --border: rgba(124,28,46,0.13);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--cream);
     color: var(--ink);
     min-height: 100vh;
@@ -36,7 +36,7 @@
 
   /* === HEADER === */
   header {
-    background: var(--ink);
+    background: #1e0a10;
     padding: 0;
     position: relative;
     overflow: hidden;
@@ -46,8 +46,8 @@
     position: absolute;
     inset: 0;
     background-image:
-      repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(201,151,63,0.06) 18px, rgba(201,151,63,0.06) 19px),
-      repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(201,151,63,0.06) 18px, rgba(201,151,63,0.06) 19px);
+      repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(200,185,138,0.05) 18px, rgba(200,185,138,0.05) 19px),
+      repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(200,185,138,0.05) 18px, rgba(200,185,138,0.05) 19px);
     pointer-events: none;
   }
 
@@ -65,18 +65,18 @@
   .header-left {}
 
   .header-eyebrow {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-light);
     margin-bottom: 10px;
     opacity: 0.9;
   }
 
   h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 300;
     font-size: clamp(2rem, 4vw, 3.4rem);
     line-height: 1.1;
@@ -85,7 +85,8 @@
   }
 
   h1 em {
-    font-style: italic;
+    font-style: normal;
+    font-weight: 600;
     color: var(--gold-light);
   }
 
@@ -109,7 +110,7 @@
   }
 
   .hstat-num {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: 2.8rem;
     font-weight: 600;
     color: var(--gold-light);
@@ -128,14 +129,14 @@
   .header-divider {
     width: 1px;
     height: 52px;
-    background: rgba(201,151,63,0.25);
+    background: rgba(200,185,138,0.22);
     align-self: center;
   }
 
   /* === NAV === */
   nav {
-    background: var(--ink-soft);
-    border-bottom: 1px solid rgba(201,151,63,0.2);
+    background: #2a0d16;
+    border-bottom: 1px solid rgba(200,185,138,0.18);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -153,7 +154,7 @@
     background: none;
     border: none;
     padding: 14px 20px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12.5px;
     font-weight: 400;
     letter-spacing: 0.05em;
@@ -182,9 +183,9 @@
 
   /* === SECTION TITLE === */
   .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-weight: 300;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
     color: var(--ink-soft);
     margin-bottom: 6px;
     letter-spacing: -0.01em;
@@ -239,8 +240,8 @@
   }
 
   .kpi-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.6rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 2.4rem;
     font-weight: 600;
     color: var(--ink);
     line-height: 1;
@@ -289,9 +290,9 @@
   }
 
   .chart-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 400;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
     color: var(--ink-soft);
     margin-bottom: 4px;
   }
@@ -407,7 +408,7 @@
     border: 1px solid var(--border);
     border-radius: 3px;
     padding: 7px 16px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 12.5px;
     font-weight: 400;
     color: var(--ink-muted);
@@ -489,7 +490,7 @@
   <div class="header-pattern"></div>
   <div class="header-inner">
     <div class="header-left">
-      <div class="header-eyebrow">Ministère de la Culture — Maroc</div>
+      <div class="header-eyebrow">ULB La Cambre Horta</div>
       <h1>Gestion <em>plurielle</em><br>du Patrimoine</h1>
       <p class="header-sub">Analyse des biens patrimoniaux protégés au Maroc — données issues du répertoire officiel du Ministère de la Culture.</p>
     </div>
@@ -928,19 +929,19 @@ const DATA = {
 // ============================================================
 
 const COLORS = {
-  terracotta: '#c0623a',
-  terracottaLight: '#e8876a',
-  mosaic: '#2e6b6b',
-  mosaicLight: '#4a9999',
-  gold: '#c9973f',
-  goldLight: '#e8c06a',
-  ink: '#1a1208',
-  inkMuted: '#7a6a52',
-  sand: '#f0e6d0',
-  palette: ['#c0623a','#2e6b6b','#c9973f','#7a4fa0','#4a7a3a','#9a3060','#3a608a','#c0823a','#6b2e6b','#3a8a6b','#8a6a3a','#5a3a8a']
+  terracotta: '#7c1c2e',
+  terracottaLight: '#a83d52',
+  mosaic: '#2d5c3e',
+  mosaicLight: '#4a8c62',
+  gold: '#c8b98a',
+  goldLight: '#ddd0a8',
+  ink: '#1a1a1a',
+  inkMuted: '#6b6b6b',
+  sand: '#e8e0d0',
+  palette: ['#7c1c2e','#2d5c3e','#c8b98a','#5a3060','#3a6050','#9a1848','#3a5878','#a8602e','#4e2c5e','#3a7858','#7a5a2e','#1e4a3e']
 };
 
-Chart.defaults.font.family = "'DM Sans', sans-serif";
+Chart.defaults.font.family = "'Inter', sans-serif";
 Chart.defaults.font.size = 12;
 Chart.defaults.color = '#7a6a52';
 
