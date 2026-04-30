@@ -8,21 +8,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sand: #e8e0d0;
-    --sand-light: #f5f2ec;
-    --terracotta: #7c1c2e;
-    --terracotta-dark: #5a1220;
-    --terracotta-light: #a83d52;
-    --mosaic: #2d5c3e;
-    --mosaic-light: #4a8c62;
-    --gold: #c8b98a;
-    --gold-light: #ddd0a8;
-    --ink: #1a1a1a;
-    --ink-soft: #2e2e2e;
-    --ink-muted: #6b6b6b;
-    --cream: #f7f4ee;
+    --sand: #e6e0d6;
+    --sand-light: #f2efe9;
+    --terracotta: #8b3a4a;
+    --terracotta-dark: #6e2a37;
+    --terracotta-light: #b06070;
+    --mosaic: #5a7268;
+    --mosaic-light: #7a9690;
+    --gold: #c4b48a;
+    --gold-light: #d8ccaa;
+    --ink: #1e1e1e;
+    --ink-soft: #333333;
+    --ink-muted: #757575;
+    --cream: #f6f3ee;
     --white: #ffffff;
-    --border: rgba(124,28,46,0.13);
+    --border: rgba(139,58,74,0.12);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,7 +36,7 @@
 
   /* === HEADER === */
   header {
-    background: #1e0a10;
+    background: #2e1920;
     padding: 0;
     position: relative;
     overflow: hidden;
@@ -135,8 +135,8 @@
 
   /* === NAV === */
   nav {
-    background: #2a0d16;
-    border-bottom: 1px solid rgba(200,185,138,0.18);
+    background: #3a2028;
+    border-bottom: 1px solid rgba(196,180,138,0.16);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -330,7 +330,7 @@
   }
 
   .data-table tbody tr {
-    border-bottom: 1px solid rgba(192,98,58,0.07);
+    border-bottom: 1px solid rgba(139,58,74,0.07);
     transition: background 0.15s;
   }
 
@@ -354,12 +354,12 @@
   }
 
   .badge-class {
-    background: rgba(192,98,58,0.12);
+    background: rgba(139,58,74,0.10);
     color: var(--terracotta-dark);
   }
 
   .badge-inscr {
-    background: rgba(46,107,107,0.12);
+    background: rgba(90,114,104,0.12);
     color: var(--mosaic);
   }
 
@@ -459,13 +459,83 @@
     letter-spacing: 0.3em;
   }
 
-  /* === RESPONSIVE === */
+  /* === RESPONSIVE — TABLETTE === */
   @media (max-width: 900px) {
-    .header-inner { flex-direction: column; align-items: flex-start; }
-    .header-stats { flex-direction: row; gap: 24px; }
-    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .header-inner { flex-direction: column; align-items: flex-start; gap: 28px; padding: 36px 24px 28px; }
+    .header-stats { flex-direction: row; gap: 20px; flex-wrap: wrap; }
+    .hstat-num { font-size: 2.2rem; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
     .chart-grid-2, .chart-grid-3 { grid-template-columns: 1fr; }
-    main, .header-inner, .nav-inner { padding-left: 20px; padding-right: 20px; }
+    main { padding: 28px 24px 60px; }
+    .nav-inner { padding: 0 16px; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-btn { padding: 12px 14px; font-size: 12px; white-space: nowrap; }
+  }
+
+  /* === RESPONSIVE — MOBILE === */
+  @media (max-width: 600px) {
+    /* Header */
+    .header-inner { padding: 24px 16px 20px; gap: 20px; }
+    h1 { font-size: 1.6rem; }
+    .header-sub { font-size: 12px; }
+    .header-stats { gap: 16px; }
+    .hstat-num { font-size: 1.8rem; }
+    .hstat-label { font-size: 10px; }
+    .header-divider { height: 36px; }
+
+    /* Nav */
+    .nav-inner { padding: 0 8px; gap: 0; }
+    .nav-btn { padding: 11px 10px; font-size: 11px; letter-spacing: 0; }
+
+    /* Main */
+    main { padding: 20px 14px 60px; }
+    .section-title { font-size: 1.2rem; }
+    .section-sub { font-size: 12px; margin-bottom: 20px; }
+
+    /* KPI grid: 1 col on very small, 2 cols ok */
+    .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .kpi { padding: 16px 14px; }
+    .kpi-icon { font-size: 16px; margin-bottom: 8px; }
+    .kpi-num { font-size: 1.8rem; }
+    .kpi-label { font-size: 10px; }
+    .kpi-sub { font-size: 10px; }
+
+    /* Chart cards */
+    .chart-card { padding: 18px 14px 16px; }
+    .chart-title { font-size: 0.9rem; }
+    .chart-sub { font-size: 11px; margin-bottom: 14px; }
+    .chart-grid-2, .chart-grid-3 { gap: 14px; }
+    .chart-grid-full { margin-bottom: 14px; }
+
+    /* Reduce chart heights on mobile */
+    .chart-wrap[style*="height:240px"] { height: 200px !important; }
+    .chart-wrap[style*="height:260px"] { height: 210px !important; }
+    .chart-wrap[style*="height:280px"] { height: 220px !important; }
+    .chart-wrap[style*="height:300px"] { height: 230px !important; }
+    .chart-wrap[style*="height:320px"] { height: 240px !important; }
+    .chart-wrap[style*="height:340px"] { height: 250px !important; }
+
+    /* Tables */
+    .data-table { font-size: 12px; }
+    .data-table thead th { padding: 8px 10px; font-size: 9.5px; }
+    .data-table tbody td { padding: 8px 10px; }
+
+    /* Hide less important columns on mobile */
+    .data-table .col-hide-mobile { display: none; }
+
+    /* Filter row */
+    .filter-row { gap: 8px; }
+    .filter-btn { padding: 6px 12px; font-size: 12px; }
+
+    /* Bar inline */
+    .bar-track { display: none; }
+  }
+
+  /* Extra small */
+  @media (max-width: 380px) {
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 1.35rem; }
+    .nav-btn { padding: 10px 8px; font-size: 10.5px; }
   }
 
   /* === ANIMATIONS === */
@@ -763,11 +833,11 @@
           <tr>
             <th>#</th>
             <th>Ville</th>
-            <th>Région</th>
+            <th class="col-hide-mobile">Région</th>
             <th>Site</th>
-            <th>Catégorie</th>
+            <th class="col-hide-mobile">Catégorie</th>
             <th>Statut</th>
-            <th>Année de protection</th>
+            <th class="col-hide-mobile">Année</th>
           </tr>
         </thead>
         <tbody id="tableRepertoireBody"></tbody>
@@ -929,16 +999,16 @@ const DATA = {
 // ============================================================
 
 const COLORS = {
-  terracotta: '#7c1c2e',
-  terracottaLight: '#a83d52',
-  mosaic: '#2d5c3e',
-  mosaicLight: '#4a8c62',
-  gold: '#c8b98a',
-  goldLight: '#ddd0a8',
-  ink: '#1a1a1a',
-  inkMuted: '#6b6b6b',
-  sand: '#e8e0d0',
-  palette: ['#7c1c2e','#2d5c3e','#c8b98a','#5a3060','#3a6050','#9a1848','#3a5878','#a8602e','#4e2c5e','#3a7858','#7a5a2e','#1e4a3e']
+  terracotta: '#8b3a4a',
+  terracottaLight: '#b06070',
+  mosaic: '#5a7268',
+  mosaicLight: '#7a9690',
+  gold: '#c4b48a',
+  goldLight: '#d8ccaa',
+  ink: '#1e1e1e',
+  inkMuted: '#757575',
+  sand: '#e6e0d6',
+  palette: ['#8b3a4a','#5a7268','#c4b48a','#7a5a7a','#4a7060','#a06070','#4a6882','#b07840','#5a4878','#4a8070','#8a7040','#3a5860']
 };
 
 Chart.defaults.font.family = "'Inter', sans-serif";
@@ -1237,7 +1307,7 @@ function buildTableVilles() {
   const max = villes[0][1];
   const tbl = document.getElementById('tableVilles');
   tbl.innerHTML = `<thead><tr>
-    <th>Rang</th><th>Ville</th><th>Sites protégés</th><th>Part nationale</th><th>Visualisation</th>
+    <th>#</th><th>Ville</th><th>Sites protégés</th><th class="col-hide-mobile">Part nationale</th><th class="col-hide-mobile">Visualisation</th>
   </tr></thead>`;
   const tbody = document.createElement('tbody');
   villes.forEach(([ville,n],i)=>{
@@ -1248,8 +1318,8 @@ function buildTableVilles() {
       <td style="color:var(--ink-muted);font-size:12px">${i+1}</td>
       <td><strong>${ville}</strong></td>
       <td>${n}</td>
-      <td>${pct}%</td>
-      <td><div class="bar-inline">
+      <td class="col-hide-mobile">${pct}%</td>
+      <td class="col-hide-mobile"><div class="bar-inline">
         <div class="bar-track"><div class="bar-fill" style="width:${barW}%;background:${COLORS.palette[i]}"></div></div>
         <span style="font-size:11px;color:var(--ink-muted);min-width:26px">${n}</span>
       </div></td>
@@ -1270,11 +1340,11 @@ function buildRepertoire(filter='all') {
     tr.innerHTML = `
       <td style="color:var(--ink-muted);font-size:12px">${i+1}</td>
       <td><strong>${r.ville}</strong></td>
-      <td style="font-size:12px;color:var(--ink-muted)">${r.region}</td>
+      <td class="col-hide-mobile" style="font-size:12px;color:var(--ink-muted)">${r.region}</td>
       <td>${r.site}</td>
-      <td><span style="font-size:12px;color:var(--ink-soft)">${r.cat}</span></td>
+      <td class="col-hide-mobile"><span style="font-size:12px;color:var(--ink-soft)">${r.cat}</span></td>
       <td><span class="badge ${badgeCls}">${r.statut}</span></td>
-      <td style="font-size:12px;color:var(--ink-muted)">${r.annee}</td>
+      <td class="col-hide-mobile" style="font-size:12px;color:var(--ink-muted)">${r.annee}</td>
     `;
     tbody.appendChild(tr);
   });
