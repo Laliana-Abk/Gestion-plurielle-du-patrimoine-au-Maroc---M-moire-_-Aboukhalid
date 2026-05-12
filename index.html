@@ -565,9 +565,7 @@
     <li><a href="#" class="active" data-page="accueil">Vue d'ensemble</a></li>
     <li><a href="#" data-page="repertoire">Répertoire</a></li>
     <li><a href="#" data-page="villes">Par ville</a></li>
-    <li><a href="#" data-page="categories">Catégories</a></li>
     <li><a href="#" data-page="evolution">Évolution</a></li>
-    <li><a href="#" data-page="top5">Top 5 villes</a></li>
   </ul>
   <button class="nav-menu-btn" id="menuBtn" aria-label="Menu">
     <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
@@ -581,22 +579,17 @@
   <a href="#" data-page="accueil">Vue d'ensemble</a>
   <a href="#" data-page="repertoire">Répertoire des sites</a>
   <a href="#" data-page="villes">Résumé par ville</a>
-  <a href="#" data-page="categories">Catégories</a>
   <a href="#" data-page="evolution">Évolution par an</a>
-  <a href="#" data-page="top5">Top 5 villes</a>
 </div>
 
 <!-- HERO -->
-<div class="page-header">
+<div class="page-header" id="hero-header">
   <div class="header-inner">
     <span class="header-tag">Ministère de la Culture · Maroc</span>
     <h1>Gestion plurielle du patrimoine au Maroc</h1>
     <p>Tableau des biens patrimoniaux d'après le ministère — L. Aboukhalid</p>
-    <div class="header-stats">
-      <div class="hstat"><span class="num">845</span><span class="lbl">Sites répertoriés</span></div>
-      <div class="hstat"><span class="num">47</span><span class="lbl">Villes couvertes</span></div>
-      <div class="hstat"><span class="num">6</span><span class="lbl">Catégories</span></div>
-      <div class="hstat"><span class="num">2024</span><span class="lbl">Dernière mise à jour</span></div>
+    <div class="header-stats" id="header-stats">
+      <!-- STATS TO BE REPLACED DYNAMICALLY -->
     </div>
   </div>
 </div>
@@ -610,31 +603,7 @@
   <div class="page-section active" id="page-accueil">
 
     <!-- KPIs -->
-    <div class="grid-4">
-      <div class="kpi">
-        <span class="k-label">Total des biens</span>
-        <span class="k-val">845</span>
-        <span class="k-sub">Biens patrimoniaux recensés</span>
-        <span class="k-badge badge-green">↑ +12 depuis 2022</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Biens classés</span>
-        <span class="k-val">312</span>
-        <span class="k-sub">Classement officiel actif</span>
-        <span class="k-badge badge-rose">36.9 %</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Sites inscrits</span>
-        <span class="k-val">533</span>
-        <span class="k-sub">En cours d'inscription</span>
-        <span class="k-badge badge-green">63.1 %</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Villes concernées</span>
-        <span class="k-val">47</span>
-        <span class="k-sub">Communes représentées</span>
-        <span class="k-badge badge-rose">5 principales</span>
-      </div>
+    <div class="grid-4" id="accueil-kpis">
     </div>
 
     <!-- Graphiques principaux -->
@@ -656,22 +625,15 @@
     </div>
 
     <!-- Évolution + Tourisme -->
-    <div class="grid-2">
-      <div class="chart-card">
+    <div class="chart-card">
         <div class="chart-title">Évolution du nombre de biens par an</div>
         <div class="chart-sub">Progression du recensement de 2005 à 2024</div>
         <div class="chart-wrap-tall">
-          <canvas id="chartEvolution"></canvas>
+            <canvas id="chartEvolution"></canvas>
         </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Tourisme & patrimoine</div>
-        <div class="chart-sub">Corrélation entre sites patrimoniaux et afflux touristique</div>
-        <div class="chart-wrap-tall">
-          <canvas id="chartTourisme"></canvas>
-        </div>
-      </div>
     </div>
+
+    
 
     <!-- Classés vs Inscrits par ville -->
     <div class="chart-card" style="margin-bottom:32px">
@@ -704,12 +666,6 @@
         </select>
         <select class="filter-sel" id="repoCatFilter">
           <option value="">Toutes les catégories</option>
-          <option value="Architectural">Architectural</option>
-          <option value="Archéologique">Archéologique</option>
-          <option value="Historique">Historique</option>
-          <option value="Religieux">Religieux</option>
-          <option value="Paysager">Paysager</option>
-          <option value="Urbain">Urbain</option>
         </select>
       </div>
 
@@ -783,31 +739,8 @@
       </div>
     </div>
 
-    <div class="grid-4">
-      <div class="kpi">
-        <span class="k-label">Architectural</span>
-        <span class="k-val">248</span>
-        <span class="k-sub">Monuments, édifices</span>
-        <span class="k-badge badge-green">29.4 %</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Archéologique</span>
-        <span class="k-val">196</span>
-        <span class="k-sub">Sites de fouilles</span>
-        <span class="k-badge badge-rose">23.2 %</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Historique</span>
-        <span class="k-val">172</span>
-        <span class="k-sub">Lieux mémoriels</span>
-        <span class="k-badge badge-green">20.4 %</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Religieux</span>
-        <span class="k-val">134</span>
-        <span class="k-sub">Mosquées, sanctuaires</span>
-        <span class="k-badge badge-rose">15.9 %</span>
-      </div>
+    <div class="grid-4" id="cat-kpis">
+      <!-- DYNAMIC -->
     </div>
 
     <div class="grid-2">
@@ -848,47 +781,19 @@
       </div>
     </div>
 
-    <div class="grid-4" style="margin-bottom:28px">
-      <div class="kpi">
-        <span class="k-label">Année de départ</span>
-        <span class="k-val">2005</span>
-        <span class="k-sub">Premier recensement systématique</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Croissance totale</span>
-        <span class="k-val">+340%</span>
-        <span class="k-sub">De 2005 à 2024</span>
-        <span class="k-badge badge-green">+622 sites</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Moy. annuelle</span>
-        <span class="k-val">+32</span>
-        <span class="k-sub">Nouveaux biens par an</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">Meilleure année</span>
-        <span class="k-val">2016</span>
-        <span class="k-sub">+71 biens en une année</span>
-        <span class="k-badge badge-rose">Record</span>
-      </div>
+    <div class="grid-4" style="margin-bottom:28px" id="evol-kpis">
+       <!-- DYNAMIC -->
     </div>
 
     <div class="chart-card" style="margin-bottom:24px">
-      <div class="chart-title">Nombre cumulé de biens patrimoniaux (2005–2024)</div>
+      <div class="chart-title">Nombre cumulé de biens patrimoniaux</div>
       <div class="chart-sub">Progression de l'inventaire officiel du ministère de la Culture</div>
       <div class="chart-wrap-tall">
         <canvas id="chartEvolCumul"></canvas>
       </div>
     </div>
 
-    <div class="chart-card">
-      <div class="chart-title">Nouveaux biens recensés par année</div>
-      <div class="chart-sub">Nombre d'ajouts annuels au répertoire patrimonial</div>
-      <div class="chart-wrap">
-        <canvas id="chartEvolBars"></canvas>
-      </div>
-    </div>
-  </div><!-- end evolution -->
+ <!-- end evolution -->
 
 
   <!-- ═══════════════════════════════════════════════════
@@ -902,46 +807,12 @@
       </div>
     </div>
 
-    <div class="grid-3" style="margin-bottom:28px">
-      <div class="kpi">
-        <span class="k-label">🥇 Marrakech</span>
-        <span class="k-val">187</span>
-        <span class="k-sub">Sites patrimoniaux</span>
-        <span class="k-badge badge-rose">22.1 % du total</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">🥈 Fès</span>
-        <span class="k-val">164</span>
-        <span class="k-sub">Sites patrimoniaux</span>
-        <span class="k-badge badge-green">19.4 % du total</span>
-      </div>
-      <div class="kpi">
-        <span class="k-label">🥉 Meknès</span>
-        <span class="k-val">98</span>
-        <span class="k-sub">Sites patrimoniaux</span>
-        <span class="k-badge badge-rose">11.6 % du total</span>
-      </div>
-    </div>
-
-    <div class="grid-2">
-      <div class="chart-card">
-        <div class="chart-title">Comparaison des 5 villes</div>
-        <div class="chart-sub">Total de biens par ville (classés + inscrits)</div>
-        <div class="chart-wrap">
-          <canvas id="chartTop5Radar"></canvas>
-        </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">Détail par catégorie — 5 villes</div>
-        <div class="chart-sub">Ventilation par type de bien patrimonial</div>
-        <div class="chart-wrap">
-          <canvas id="chartTop5Cat"></canvas>
-        </div>
-      </div>
+    <div class="grid-3" style="margin-bottom:28px" id="top5-kpis">
+      <!-- DYNAMIC -->
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Évolution comparée des 5 villes (2010–2024)</div>
+      <div class="chart-title">Évolution comparée des 5 villes</div>
       <div class="chart-sub">Progression du nombre de biens recensés dans les cinq villes principales</div>
       <div class="chart-wrap-tall">
         <canvas id="chartTop5Evol"></canvas>
@@ -960,29 +831,10 @@
               <th>Total biens</th>
               <th>Classés</th>
               <th>Inscrits</th>
-              <th>Architectural</th>
-              <th>Archéologique</th>
-              <th>Historique</th>
-              <th>Religieux</th>
               <th>Taux classement</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>1</td><td><strong>Marrakech</strong></td><td>187</td><td>72</td><td>115</td><td>68</td><td>32</td><td>45</td><td>42</td><td><span class="tag tag-arch">38.5 %</span></td>
-            </tr>
-            <tr>
-              <td>2</td><td><strong>Fès</strong></td><td>164</td><td>68</td><td>96</td><td>54</td><td>28</td><td>40</td><td>42</td><td><span class="tag tag-arch">41.5 %</span></td>
-            </tr>
-            <tr>
-              <td>3</td><td><strong>Meknès</strong></td><td>98</td><td>39</td><td>59</td><td>38</td><td>18</td><td>22</td><td>20</td><td><span class="tag tag-arch2">39.8 %</span></td>
-            </tr>
-            <tr>
-              <td>4</td><td><strong>Rabat</strong></td><td>86</td><td>31</td><td>55</td><td>30</td><td>22</td><td>20</td><td>14</td><td><span class="tag tag-arch2">36.0 %</span></td>
-            </tr>
-            <tr>
-              <td>5</td><td><strong>Essaouira</strong></td><td>74</td><td>24</td><td>50</td><td>28</td><td>14</td><td>18</td><td>14</td><td><span class="tag tag-hist">32.4 %</span></td>
-            </tr>
+          <tbody id="top5-tbody">
           </tbody>
         </table>
       </div>
@@ -999,8 +851,5900 @@
 
 <script>
 /* ═══════════════════════════════════════════════════
-   DONNÉES
+   DONNÉES DYNAMIQUES
 ═══════════════════════════════════════════════════ */
+
+
+const DATA = {
+  "VILLES_DATA": [
+    {
+        "ville": "Tanger",
+        "total": 123,
+        "classes": 26,
+        "inscrits": 97,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Casablanca",
+        "total": 109,
+        "classes": 2,
+        "inscrits": 107,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "ville": "Rabat",
+        "total": 43,
+        "classes": 21,
+        "inscrits": 22,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "ville": "Meknès",
+        "total": 37,
+        "classes": 37,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "Fes",
+        "total": 35,
+        "classes": 35,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "Kénitra",
+        "total": 29,
+        "classes": 9,
+        "inscrits": 20,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "ville": "Aousserd ",
+        "total": 28,
+        "classes": 0,
+        "inscrits": 28,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "ville": "Marrakech",
+        "total": 21,
+        "classes": 21,
+        "inscrits": 0,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "ville": "Salé",
+        "total": 21,
+        "classes": 20,
+        "inscrits": 1,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "ville": "Oujda",
+        "total": 19,
+        "classes": 5,
+        "inscrits": 14,
+        "region": "L'Oriental"
+    },
+    {
+        "ville": "El Jadida",
+        "total": 15,
+        "classes": 14,
+        "inscrits": 1,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "ville": "Safi",
+        "total": 14,
+        "classes": 13,
+        "inscrits": 1,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "ville": "Smara",
+        "total": 14,
+        "classes": 0,
+        "inscrits": 14,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "ville": "Al Haouz",
+        "total": 13,
+        "classes": 11,
+        "inscrits": 2,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "ville": "Ouerzazat",
+        "total": 9,
+        "classes": 9,
+        "inscrits": 0,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "ville": "Laarache",
+        "total": 7,
+        "classes": 1,
+        "inscrits": 6,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Agadir",
+        "total": 6,
+        "classes": 6,
+        "inscrits": 0,
+        "region": "Souss - Massa"
+    },
+    {
+        "ville": "Ifrane",
+        "total": 6,
+        "classes": 6,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "Taza",
+        "total": 6,
+        "classes": 6,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "Essaouira",
+        "total": 5,
+        "classes": 5,
+        "inscrits": 0,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "ville": "Tétouan",
+        "total": 5,
+        "classes": 2,
+        "inscrits": 3,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Azemmour",
+        "total": 4,
+        "classes": 4,
+        "inscrits": 0,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "ville": "Béni - Mellal",
+        "total": 4,
+        "classes": 4,
+        "inscrits": 0,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "ville": "El hajeb",
+        "total": 4,
+        "classes": 4,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "Khénifra",
+        "total": 4,
+        "classes": 4,
+        "inscrits": 0,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "ville": "Ksar E kebir",
+        "total": 4,
+        "classes": 0,
+        "inscrits": 4,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Oued Ed-Dahab",
+        "total": 4,
+        "classes": 0,
+        "inscrits": 4,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "ville": "Sefrou",
+        "total": 4,
+        "classes": 4,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "Tiznit",
+        "total": 4,
+        "classes": 4,
+        "inscrits": 0,
+        "region": "Souss - Massa"
+    },
+    {
+        "ville": "Al Hoceïma",
+        "total": 3,
+        "classes": 1,
+        "inscrits": 2,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Chefchaouen",
+        "total": 3,
+        "classes": 2,
+        "inscrits": 1,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Nador",
+        "total": 3,
+        "classes": 0,
+        "inscrits": 3,
+        "region": "L'Oriental"
+    },
+    {
+        "ville": "Azilal",
+        "total": 2,
+        "classes": 2,
+        "inscrits": 0,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "ville": "Azrou",
+        "total": 2,
+        "classes": 2,
+        "inscrits": 0,
+        "region": "Fès - Meknès"
+    },
+    {
+        "ville": "El-Aroui",
+        "total": 2,
+        "classes": 0,
+        "inscrits": 2,
+        "region": "L'Oriental"
+    },
+    {
+        "ville": "Kelaa des Sraghna",
+        "total": 2,
+        "classes": 2,
+        "inscrits": 0,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "ville": "Settat",
+        "total": 2,
+        "classes": 2,
+        "inscrits": 0,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "ville": "Sidi Kacem",
+        "total": 2,
+        "classes": 2,
+        "inscrits": 0,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "ville": "Taroudant",
+        "total": 2,
+        "classes": 2,
+        "inscrits": 0,
+        "region": "Souss - Massa"
+    },
+    {
+        "ville": "Abijaad",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "ville": "Assilah",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Errachidia",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "ville": "Fguig",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "L'Oriental"
+    },
+    {
+        "ville": "Guelmim",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Guelmim - Oued Noun"
+    },
+    {
+        "ville": "Guercif",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "L'Oriental"
+    },
+    {
+        "ville": "Inzeganne",
+        "total": 1,
+        "classes": 0,
+        "inscrits": 1,
+        "region": "Souss - Massa"
+    },
+    {
+        "ville": "Ouezzane ",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "ville": "Rissani",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "ville": "Sidi Selimane",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "ville": "Tata",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Souss - Massa"
+    },
+    {
+        "ville": "Témara",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "ville": "Zagoura",
+        "total": 1,
+        "classes": 1,
+        "inscrits": 0,
+        "region": "Drâa - Tafilalet"
+    }
+],
+  "CATEGORIES": [
+    {
+        "count": 130,
+        "classes": 6,
+        "nom": "Bâtiment",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 79,
+        "classes": 55,
+        "nom": "Nature",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 31,
+        "classes": 30,
+        "nom": "Zone",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 28,
+        "classes": 26,
+        "nom": "Muraille",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 27,
+        "classes": 0,
+        "nom": "Villa",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 24,
+        "classes": 16,
+        "nom": "Archéologie",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 24,
+        "classes": 9,
+        "nom": "Hôtel",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 22,
+        "classes": 19,
+        "nom": "Kasbah",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 17,
+        "classes": 1,
+        "nom": "Cinéma",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 17,
+        "classes": 16,
+        "nom": "Fleuve",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 16,
+        "classes": 3,
+        "nom": "Ecole",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 14,
+        "classes": 11,
+        "nom": "Mosquée",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 11,
+        "classes": 10,
+        "nom": "Bab",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 10,
+        "classes": 0,
+        "nom": "Autre",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 10,
+        "classes": 5,
+        "nom": "Dar",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 10,
+        "classes": 8,
+        "nom": "Médina",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 9,
+        "classes": 9,
+        "nom": "Médersa",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 8,
+        "classes": 3,
+        "nom": "Eglise",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 8,
+        "classes": 0,
+        "nom": "Garage",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 8,
+        "classes": 6,
+        "nom": "Jardin",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 8,
+        "classes": 5,
+        "nom": "Palais",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 7,
+        "classes": 0,
+        "nom": "Banque",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 7,
+        "classes": 5,
+        "nom": "Tour",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 6,
+        "classes": 6,
+        "nom": "Msid",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 5,
+        "classes": 5,
+        "nom": "Loi",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 5,
+        "classes": 3,
+        "nom": "Militaire",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 5,
+        "classes": 5,
+        "nom": "Place",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 5,
+        "classes": 4,
+        "nom": "Pont",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 5,
+        "classes": 3,
+        "nom": "Quartier",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 5,
+        "classes": 5,
+        "nom": "Sanctuaire",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 4,
+        "classes": 0,
+        "nom": "Gare",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 4,
+        "classes": 1,
+        "nom": "Hôpital",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 4,
+        "classes": 4,
+        "nom": "Ville",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 3,
+        "classes": 0,
+        "nom": "Café",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 3,
+        "classes": 2,
+        "nom": "Ksar",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 3,
+        "classes": 0,
+        "nom": "Poste",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 3,
+        "classes": 0,
+        "nom": "Tribunal",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 2,
+        "classes": 1,
+        "nom": "Cimetière",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 2,
+        "classes": 0,
+        "nom": "Ecriture",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 2,
+        "classes": 0,
+        "nom": "Forteresse",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 2,
+        "classes": 0,
+        "nom": "Magasin",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 2,
+        "classes": 1,
+        "nom": "Marché",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 2,
+        "classes": 2,
+        "nom": "Réseau routier",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 2,
+        "classes": 2,
+        "nom": "Site",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 2,
+        "classes": 0,
+        "nom": "Siège",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 2,
+        "classes": 1,
+        "nom": "Tombeau",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 2,
+        "classes": 0,
+        "nom": "Usine",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Abbatoires",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Aquarium",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Bibliothèque",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Carrière",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Char",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Cité",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Consulat",
+        "color": "rgba(27,74,61,0.28)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Darih",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Dôme",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Ecuries",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Equitation",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Golf",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Hammam",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Horloge",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Loi ",
+        "color": "rgba(150,150,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Maison",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Mellah",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Musée",
+        "color": "rgba(180,115,107,0.3)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Parc",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Phare",
+        "color": "rgba(180,115,107,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Pharmacie",
+        "color": "rgba(27,74,61,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Quechla",
+        "color": "rgba(100,100,150,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Réservoir",
+        "color": "rgba(100,150,100,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Théâtre",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "Vestiges",
+        "color": "rgba(150,100,100,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Village",
+        "color": "rgba(27,74,61,0.82)"
+    },
+    {
+        "count": 1,
+        "classes": 1,
+        "nom": "École",
+        "color": "rgba(180,115,107,0.5)"
+    },
+    {
+        "count": 1,
+        "classes": 0,
+        "nom": "Église",
+        "color": "rgba(27,74,61,0.28)"
+    }
+],
+  "ANNEES": [1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925, 1926, 1927, 1928, 1929, 1930, 1931, 1932, 1933, 1934, 1935, 1936, 1937, 1938, 1939, 1940, 1941, 1942, 1943, 1944, 1945, 1946, 1947, 1948, 1949, 1950, 1951, 1952, 1953, 1954, 1955, 1956, 1957, 1958, 1959, 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974, 1975, 1976, 1977, 1978, 1979, 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+  "CUMUL": [24, 31, 37, 38, 39, 40, 52, 56, 77, 81, 109, 116, 118, 123, 125, 127, 131, 135, 140, 144, 148, 149, 151, 153, 153, 153, 156, 162, 167, 177, 185, 185, 185, 187, 193, 203, 206, 211, 215, 220, 230, 234, 236, 239, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 240, 241, 241, 241, 241, 241, 241, 242, 242, 242, 242, 242, 242, 243, 243, 243, 243, 243, 243, 244, 244, 244, 244, 245, 247, 247, 249, 254, 259, 259, 264, 273, 277, 300, 309, 309, 310, 310, 332, 334, 336, 341, 343, 350, 373, 596, 605, 608, 620, 633],
+  "AJOUTS": [24, 7, 6, 1, 1, 1, 12, 4, 21, 4, 28, 7, 2, 5, 2, 2, 4, 4, 5, 4, 4, 1, 2, 2, 0, 0, 3, 6, 5, 10, 8, 0, 0, 2, 6, 10, 3, 5, 4, 5, 10, 4, 2, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2, 5, 5, 0, 5, 9, 4, 23, 9, 0, 1, 0, 22, 2, 2, 5, 2, 7, 23, 223, 9, 3, 12, 13],
+  "REPERTOIRE_FULL": [
+    {
+        "nom": "Kasbah Cherarda",
+        "ville": "Fes",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Murailles interne de Fès Nouvelle",
+        "ville": "Fes",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Casbah des Filala",
+        "ville": "Fes",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Murailles externes de Fès",
+        "ville": "Fes",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Murailles de Fès",
+        "ville": "Fes",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone intérieure de protection entourant les murailles de la ville de Fès",
+        "ville": "Fes",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone extérieure de protection entourant les murailles de la ville de Fès",
+        "ville": "Fes",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Bab Boujloud",
+        "ville": "Fes",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Bab Dkaken",
+        "ville": "Fes",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Bab Mansour Laalej",
+        "ville": "Meknès",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "La Kasbah d’Oudaya",
+        "ville": "Rabat",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bab El Fachala",
+        "ville": "Meknès",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Murailles de la ville de Rabat",
+        "ville": "Rabat",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Portails et Murailles de Meknès",
+        "ville": "Meknès",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Bab al-Khamis",
+        "ville": "Meknès",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Anciennes Ecuries de Moulay Ismail",
+        "ville": "Meknès",
+        "categorie": "Ecuries",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Dar al Bayda",
+        "ville": "Meknès",
+        "categorie": "Dar",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Jnane bin Halima",
+        "ville": "Meknès",
+        "categorie": "Quartier",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Salle des ablutions Moulay Ismail",
+        "ville": "Meknès",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection au sein des murailles de Salé",
+        "ville": "Salé",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Zone de protection en dehors des murailles de Salé",
+        "ville": "Salé",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Murailles de la ville de Salé",
+        "ville": "Salé",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Canal de Salé",
+        "ville": "Salé",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Murailles de Marrakech",
+        "ville": "Marrakech",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1914,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Medersa Sahrij",
+        "ville": "Fes",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Medersa Attarine",
+        "ville": "Fes",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Merdersa Bou Inania",
+        "ville": "Fes",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Merdersa Seffarine",
+        "ville": "Fes",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Medersa Al Mesbahia",
+        "ville": "Fes",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Medersa Cherratine",
+        "ville": "Fes",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Portail de la mosquée Sidi Belabbas à Salé",
+        "ville": "Salé",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1915,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôtel Nejjarine",
+        "ville": "Fes",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 1916,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "La Grande Mosquée de Taza",
+        "ville": "Taza",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1916,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "La muraille consolidée de la ville de Taza",
+        "ville": "Taza",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1916,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "La Kasbah de Mehdia",
+        "ville": "Kénitra",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1916,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Kasba de Tadla ‘’Ait Lerba’’",
+        "ville": "Béni - Mellal",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1916,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Ecole Moulay Youssef",
+        "ville": "Marrakech",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1916,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "La zone entourant la Tour de Hassan",
+        "ville": "Rabat",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1917,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Dôme Khayyatine",
+        "ville": "Meknès",
+        "categorie": "Dôme",
+        "statut": "Classement",
+        "annee": 1918,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "L’Eglise Portuguaise Mazagan",
+        "ville": "El Jadida",
+        "categorie": "Eglise",
+        "statut": "Classement",
+        "annee": 1919,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Zone de protection le long d’une partie des murailles de la ville de Rabat",
+        "ville": "Rabat",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Les vestiges archéologiques de la place Chellah",
+        "ville": "Rabat",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Différentes zones de la protection",
+        "ville": "Rabat",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Zone de protection le long des murailles de Rabat entourée de la zone sud-est d’Agdal Sulatn",
+        "ville": "Rabat",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Zone de protection autour des murailles de la ville de Fès",
+        "ville": "Fes",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Hôpital Louis",
+        "ville": "Meknès",
+        "categorie": "Hôpital",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection autour du site archéologique Oualili",
+        "ville": "Meknès",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone d’aisance le long des murailles de Salé",
+        "ville": "Salé",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Kasba Tadla et les différents sites et zones",
+        "ville": "Béni - Mellal",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Zone de protection autour de la Koutoubia",
+        "ville": "Marrakech",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Zone de protection au sein de et à l’exterieur des murailles de l’ancienne médina et autour de la muraille d’Agdal à Marrakech",
+        "ville": "Marrakech",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Quartier des potiers à Safi",
+        "ville": "Safi",
+        "categorie": "Quartier",
+        "statut": "Classement",
+        "annee": 1920,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Les deux zones de protection au sein de la muraille de la médina et Agdal à Fès",
+        "ville": "Fes",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1921,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Place Lehdim et zone 24m autour de la place",
+        "ville": "Meknès",
+        "categorie": "Place",
+        "statut": "Classement",
+        "annee": 1921,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site d'Oualili",
+        "ville": "Meknès",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1921,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection autour de la Kasbah de Mehdia",
+        "ville": "Kénitra",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1921,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Zone de protection le long des murailles, entre Bab Tben et Sidi Makhlouf",
+        "ville": "Rabat",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Mosquée et Tour de Hassan à Rabat",
+        "ville": "Rabat",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Loi pour la protection de la ville de Meknès, côté esthétique",
+        "ville": "Meknès",
+        "categorie": "Loi ",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection autour des murailles de la ville de Taza",
+        "ville": "Taza",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Réseau routier propre à la zone de prolongement de la ville de Salé",
+        "ville": "Salé",
+        "categorie": "Réseau routier",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Réseau routier et passages de la Médina de Salé",
+        "ville": "Salé",
+        "categorie": "Réseau routier",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "La Médersa des Mérinides à Salé",
+        "ville": "Salé",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Zone de protection au sein des murailles de Salé",
+        "ville": "Salé",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Les tombeaux Saadiens",
+        "ville": "Marrakech",
+        "categorie": "Tombeau",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Mosquée de la Koutoubia",
+        "ville": "Marrakech",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Ruisseau ‘’Mouassen’’",
+        "ville": "Marrakech",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Ruisseau ‘’Bab Doukkala’’",
+        "ville": "Marrakech",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Ruisseau ‘’Ichrab’’",
+        "ville": "Marrakech",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Pont d’Oued N’Fis",
+        "ville": "Marrakech",
+        "categorie": "Pont",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Cinq anciens ponts sur Oued Issil à l’est de Marrakech",
+        "ville": "Marrakech",
+        "categorie": "Pont",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Zone de protection le long des murailles occidentales de Marrakech et le long de la nouvelle route de Koutoubia à partir de Guéliz jusqu’à l’intérieur des murailles de la ville de Marrakech",
+        "ville": "Marrakech",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Loi pour la protection de la ville, côté esthétique",
+        "ville": "Marrakech",
+        "categorie": "Loi",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Place Jamaa El Fna",
+        "ville": "Marrakech",
+        "categorie": "Place",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Ksar el Bahr",
+        "ville": "Safi",
+        "categorie": "Ksar",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Quechla de Safi",
+        "ville": "Safi",
+        "categorie": "Quechla",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Quartier Sidi Bouqnadel ‘’Founti’’",
+        "ville": "Agadir",
+        "categorie": "Quartier",
+        "statut": "Classement",
+        "annee": 1922,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Loi pour la sécurité de la ville, côté estétique à Fès El Bali et Fès Nouvelle",
+        "ville": "Fes",
+        "categorie": "Loi",
+        "statut": "Classement",
+        "annee": 1923,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "L’ancienne médina d’El-JAdida",
+        "ville": "El Jadida",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 1923,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Les vestiges archéologiques de Palais El Badiî",
+        "ville": "Marrakech",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1923,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Murailles de Safi",
+        "ville": "Safi",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1923,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Tour de la mosquée Hassan Moulin à Rabat",
+        "ville": "Rabat",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Mosquée Al-Azhar",
+        "ville": "Fes",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Musée Batha à Fès El Bali",
+        "ville": "Fes",
+        "categorie": "Musée",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Dar el Baida ou Palais Bouhloud",
+        "ville": "Fes",
+        "categorie": "Dar",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Dar Adiyel à Fès El Bali",
+        "ville": "Fes",
+        "categorie": "Dar",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Pont Oued Nja",
+        "ville": "Fes",
+        "categorie": "Pont",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ecole al Filaliya",
+        "ville": "Meknès",
+        "categorie": "Ecole",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Hôtel El Hana",
+        "ville": "Meknès",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau I",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau Janat el Aman",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau El Haddadin",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau El Adoul",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau Lalla Aicha Adaouia",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau Crichron",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau Touta",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ruisseau El Kaddour",
+        "ville": "Meknès",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Msid",
+        "ville": "Meknès",
+        "categorie": "Msid",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Msid de Moulay Abdellah",
+        "ville": "Meknès",
+        "categorie": "Msid",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Msid de Filala",
+        "ville": "Meknès",
+        "categorie": "Msid",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Msid al-Mohtassib",
+        "ville": "Meknès",
+        "categorie": "Msid",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Msid Touta",
+        "ville": "Meknès",
+        "categorie": "Msid",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Msid Si Keddour",
+        "ville": "Meknès",
+        "categorie": "Msid",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Medersa Bou Inania",
+        "ville": "Meknès",
+        "categorie": "Médersa",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "La Kasbah Boulaaouan",
+        "ville": "El Jadida",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Palais Bahia",
+        "ville": "Marrakech",
+        "categorie": "Palais",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "L’Eglise Portugaise de Safi",
+        "ville": "Safi",
+        "categorie": "Eglise",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Zone de protection autour Ksar el Bahr à Safi",
+        "ville": "Safi",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Les murailles de Mogador",
+        "ville": "Essaouira",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1924,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Pont Ben Tato sur l'Oued Fès",
+        "ville": "Fes",
+        "categorie": "Pont",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Entrée de l'hôtel des Statunistes à Fès",
+        "ville": "Fes",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Hôtel Accor à Salé",
+        "ville": "Salé",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Vestiges de la Tour Bourmada à Salé",
+        "ville": "Salé",
+        "categorie": "Vestiges",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Terrain entourant les vestiges de la Zaouiya Sidi Belabbas",
+        "ville": "Salé",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le pavillon et le grand bassin des Jardins de la Ménara",
+        "ville": "Marrakech",
+        "categorie": "Jardin",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Les vestiges archéologiques de la mosquée Tinmel",
+        "ville": "Al Haouz",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1925,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Bab Ten et une partie de la muraille de la ville ‘’Murailles de l’Andalous’’",
+        "ville": "Rabat",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 1926,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Murailles et forteresses de Sefrou",
+        "ville": "Sefrou",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1926,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ville d'Ouezzane et sa périphérie",
+        "ville": "Ouezzane ",
+        "categorie": "Ville",
+        "statut": "Classement",
+        "annee": 1927,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Place ‘’Poeymiran‘’",
+        "ville": "Meknès",
+        "categorie": "Place",
+        "statut": "Classement",
+        "annee": 1927,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Ville de Sefrou",
+        "ville": "Sefrou",
+        "categorie": "Ville",
+        "statut": "Classement",
+        "annee": 1927,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Les murailles portugaises à Azemmour",
+        "ville": "Azemmour",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1927,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Les vestiges de la forteresse portugaise à Azemmour",
+        "ville": "Azemmour",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1927,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Zone de protection du site Sidi Harazem",
+        "ville": "Fes",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1928,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Kasbah Bin Hamidouch",
+        "ville": "Essaouira",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1928,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "La rive droite de Oued Oum-Rabia",
+        "ville": "Azemmour",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1929,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site Nakhil",
+        "ville": "Marrakech",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1929,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "L’ancienne médina de Meknès",
+        "ville": "Meknès",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 1930,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection dans le site Banasa, actuellement nommé ‘’Sidi Ali Bougnon’’",
+        "ville": "Kénitra",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1930,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Vestiges des murailles de la ville monumentale Bassorah",
+        "ville": "Kénitra",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1930,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Les vestiges archéologiques de l’Eglise Protugaise à derb Sidi Abdelkarim à Safi",
+        "ville": "Safi",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1930,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Zone de protection autour du site archéologique Da el Bayda",
+        "ville": "Meknès",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1931,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection des anciennes tranchées et des terrains entourant les murailles d’Azemmour",
+        "ville": "Azemmour",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1931,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Zone de protection du site prolongé au sud des Jardins de Menara et avenue Menara",
+        "ville": "Marrakech",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1931,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Murailles de Taroudant",
+        "ville": "Taroudant",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1931,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Muraille du site Chellah",
+        "ville": "Rabat",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1932,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Les murailles entourées d’Agdal",
+        "ville": "Meknès",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1932,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Les murailles de la forteresse Portugaise",
+        "ville": "Agadir",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1932,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Les murailles de la Kasbah d’Agadir",
+        "ville": "Agadir",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1932,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Murailles, Portails et Forteresse de Tiznit",
+        "ville": "Tiznit",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1932,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Murailles, Portails et Forteresses de la Kasbah d’El Hajeb",
+        "ville": "El hajeb",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1933,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Construction de bâtiments sur les terrains de la zone de prolongement de la ville de Salé",
+        "ville": "Salé",
+        "categorie": "Bâtiment",
+        "statut": "Classement",
+        "annee": 1933,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiments des biens makhaznis trouvés près de la Koutoubia",
+        "ville": "Marrakech",
+        "categorie": "Bâtiment",
+        "statut": "Classement",
+        "annee": 1933,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site de Tiznit",
+        "ville": "Tiznit",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 1933,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Cimetière Phénicien à Marshan",
+        "ville": "Tanger",
+        "categorie": "Cimetière",
+        "statut": "Classement",
+        "annee": 1934,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Les murailles au long de l'avenue de France à Fès entre Bab Dkaken et Casbah de Boujloud",
+        "ville": "Fes",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1934,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Les murailles de la kasbah Mouha Ouhemmou",
+        "ville": "Khénifra",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1934,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Les vestiges archéologiques de la Queshla d’Acouchtim dans le site de Tinmel",
+        "ville": "Al Haouz",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1934,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Différents vestiges archéologiques du site de Tinmel",
+        "ville": "Al Haouz",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1935,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Tour de Hassan",
+        "ville": "Rabat",
+        "categorie": "Tour",
+        "statut": "Classement",
+        "annee": 1936,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Quissaria de Salé",
+        "ville": "Salé",
+        "categorie": "Marché",
+        "statut": "Classement",
+        "annee": 1936,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site de Boufekrane",
+        "ville": "El hajeb",
+        "categorie": "Site",
+        "statut": "Classement",
+        "annee": 1937,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Zone de protection entourée du site Romain « eaux daciques »",
+        "ville": "Sidi Kacem",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1937,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Murailles et fortifications de l'ancienne médina de Tanger",
+        "ville": "Tanger",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1940,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Tour de rue Sania",
+        "ville": "Tanger",
+        "categorie": "Tour",
+        "statut": "Classement",
+        "annee": 1940,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Parc Sidi Rahal",
+        "ville": "Kelaa des Sraghna",
+        "categorie": "Parc",
+        "statut": "Classement",
+        "annee": 1940,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Bâtiment \"Habs Jbala\"",
+        "ville": "Fes",
+        "categorie": "Bâtiment",
+        "statut": "Classement",
+        "annee": 1941,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site d’Akelman Sidi Ali",
+        "ville": "Ifrane",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1941,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Mosquée Sidi Chiguer",
+        "ville": "Safi",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1941,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Sanctuaire Sidi Chiguer",
+        "ville": "Safi",
+        "categorie": "Sanctuaire",
+        "statut": "Classement",
+        "annee": 1941,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Sanctuaire Sidi Dahmane",
+        "ville": "Safi",
+        "categorie": "Sanctuaire",
+        "statut": "Classement",
+        "annee": 1941,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site de la colline des Lagons",
+        "ville": "Errachidia",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1941,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Ancienne Carrière de Lgorna",
+        "ville": "Salé",
+        "categorie": "Carrière",
+        "statut": "Classement",
+        "annee": 1942,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site Aguelmam Azegza",
+        "ville": "Khénifra",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1942,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Site d’Ajdir",
+        "ville": "Khénifra",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1942,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Zone de protection de la carrière de Sidi Abderrahmane",
+        "ville": "Casablanca",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1942,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "L’Église Notre Dame de la lumière à Mazagan",
+        "ville": "El Jadida",
+        "categorie": "Eglise",
+        "statut": "Classement",
+        "annee": 1942,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site des cascades d’Ouzoud",
+        "ville": "Azilal",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Vestiges de Ribat Tit",
+        "ville": "El Jadida",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Tour de la mosquée Moulay Abdellah",
+        "ville": "El Jadida",
+        "categorie": "Tour",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Ancienne kasbah d’Essaouira",
+        "ville": "Safi",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site d’Oued Rdat à Sidi Rahal",
+        "ville": "Kelaa des Sraghna",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Ancienne kasbah d’Essaouira",
+        "ville": "Essaouira",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Les Gorges de Dadès",
+        "ville": "Ouerzazat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Collines de Boughafer",
+        "ville": "Ouerzazat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Dunes d’Oued M’Goun",
+        "ville": "Ouerzazat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Dunes d’Oued Toudra",
+        "ville": "Ouerzazat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1943,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Cascades d’Ain Leuh",
+        "ville": "Ifrane",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "La rive gauche d’Oued Oum Rabia à Kasba Tadla",
+        "ville": "Béni - Mellal",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Site d’Asni",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site d’Aremd",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site de Tachdirt",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site d’Ourika",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site de Tahannaout",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Kasbah d’Agadir-Ighir",
+        "ville": "Agadir",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1944,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Panorama du boulevard Pasteur",
+        "ville": "Tanger",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1947,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Site de la Zaouia d’Ifrane",
+        "ville": "Ifrane",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1947,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site et murailles de Kasah Agourai",
+        "ville": "El hajeb",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1948,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site du lagon Diouane",
+        "ville": "Ifrane",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1948,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site des Sources d’Oum Rabia",
+        "ville": "Ifrane",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1948,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site littoral au nord de Salé",
+        "ville": "Salé",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1948,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Sanctuaire Sidi Moussa",
+        "ville": "Salé",
+        "categorie": "Sanctuaire",
+        "statut": "Classement",
+        "annee": 1948,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Kasbah des Gnaoua",
+        "ville": "Salé",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1948,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Murailles de l'ancienne médina d'Oujda",
+        "ville": "Oujda",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Site de la maison",
+        "ville": "Sefrou",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Grand Site d’Akechmir",
+        "ville": "Azrou",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site de Sidi Majbour",
+        "ville": "Taza",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Sidi Kacem",
+        "ville": "Sidi Kacem",
+        "categorie": "Ville",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site Ziyatine à Béni Mellal",
+        "ville": "Béni - Mellal",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Site Tiguelmamine",
+        "ville": "Khénifra",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Site Imi-n-Ifri",
+        "ville": "Azilal",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Site de Timichi",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site du site Tafelni et Imsouane",
+        "ville": "Essaouira",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1949,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site du sanctuaire de Sidi Ahmed El-Barnoussi",
+        "ville": "Fes",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1950,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site d’El-Bhalil",
+        "ville": "Sefrou",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1950,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Sites de l’annexe des affaires civiles à Tafraout",
+        "ville": "Tiznit",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1950,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Site des grottes d'Hercules",
+        "ville": "Tanger",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1951,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Kasbah de Saïdia",
+        "ville": "Oujda",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1951,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Site du Lac Sidi Boughaba",
+        "ville": "Kénitra",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1951,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Deux couches géologiques et archéologiques",
+        "ville": "Casablanca",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1951,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site d’Oukaimeden des inscriptions cunéiphormes",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1951,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Grotte des Pigeons - Taforalt",
+        "ville": "Oujda",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1952,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Site de Ras El Oued",
+        "ville": "Taza",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1952,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Le char portugais à Mazagan",
+        "ville": "El Jadida",
+        "categorie": "Char",
+        "statut": "Classement",
+        "annee": 1952,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Les inscriptions cunéiformes de Jbel Fkoussat à Tikkan",
+        "ville": "Tata",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1952,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Sources Sidi Yahya",
+        "ville": "Oujda",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1953,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Site d’al Koudiya",
+        "ville": "Ifrane",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1953,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site du lagon Sidi Moussa",
+        "ville": "El Jadida",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1953,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Sti Fadma",
+        "ville": "Al Haouz",
+        "categorie": "Ville",
+        "statut": "Classement",
+        "annee": 1953,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Les Oueds des Dunes",
+        "ville": "Ouerzazat",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 1953,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Site de l’estuaire d’Oued Abou Regreg à Rabat",
+        "ville": "Rabat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Terrain près de Bab Rouah à Rabat",
+        "ville": "Rabat",
+        "categorie": "Zone",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site Debdou",
+        "ville": "Oujda",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "L'ancienne médina de Fès : Fès Nouvelle et Fès El Bali",
+        "ville": "Fes",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site des vestiges archéologiques Romaines du Souk Elarbaa du Gharb",
+        "ville": "Kénitra",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Kasbah Ayir",
+        "ville": "Safi",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Dar Si Issa",
+        "ville": "Safi",
+        "categorie": "Dar",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site et Kasbah Taourirte",
+        "ville": "Ouerzazat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Site et Kasbah Tifoultoute",
+        "ville": "Ouerzazat",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "L’ancienne médina à Tiznit et les zones de protection",
+        "ville": "Tiznit",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 1954,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Mosquée Moulina",
+        "ville": "Rabat",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 1955,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site de l’Ancienne Médina",
+        "ville": "Meknès",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 1955,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site d’Agdal à Meknès",
+        "ville": "Meknès",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1955,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Arrêté ministériel datant du 09 mars 1955",
+        "ville": "Agadir",
+        "categorie": "Loi",
+        "statut": "Classement",
+        "annee": 1955,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Panorama des anciennes grottes",
+        "ville": "Essaouira",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1956,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Arrêté numéro 2-56-664 datant du 15 septembre 1956 exigeant une enquête pour le classement du site",
+        "ville": "Agadir",
+        "categorie": "Loi",
+        "statut": "Classement",
+        "annee": 1956,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Sanctuaire Sidi Masshour",
+        "ville": "Fes",
+        "categorie": "Sanctuaire",
+        "statut": "Classement",
+        "annee": 1957,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site de la forêt sacrée de Sidi Masshour",
+        "ville": "Fes",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 1957,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "El Kenzira (Cap Blanc)",
+        "ville": "El Jadida",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 1957,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site du Site urbain de Settat-les propriétés privées au sein de Kasbah Lemzamza",
+        "ville": "Settat",
+        "categorie": "Site",
+        "statut": "Classement",
+        "annee": 1958,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site de Ksar Sghir",
+        "ville": "Tanger",
+        "categorie": "Ksar",
+        "statut": "Classement",
+        "annee": 1974,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Sanctuaire d’Al Kour",
+        "ville": "El hajeb",
+        "categorie": "Sanctuaire",
+        "statut": "Classement",
+        "annee": 1980,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site Dar Es-Soltane",
+        "ville": "Rabat",
+        "categorie": "Dar",
+        "statut": "Classement",
+        "annee": 1986,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Jardin Botanique",
+        "ville": "Rabat",
+        "categorie": "Jardin",
+        "statut": "Inscription",
+        "annee": 1992,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Murailles de l'ancienne médina d'Assilah",
+        "ville": "Assilah",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 1996,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Kasbah de Chefchaouen",
+        "ville": "Chefchaouen",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1997,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "La Kasbah de la Mansouriya et la zone de protection qui l’entoure",
+        "ville": "Sidi Selimane",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1997,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Temple Danan ou Mellah de Fès",
+        "ville": "Fes",
+        "categorie": "Mellah",
+        "statut": "Classement",
+        "annee": 1999,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Nouvelle kasbah Qaid Ali",
+        "ville": "Zagoura",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 1999,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Les façades de l’hôtel Lincoln",
+        "ville": "Casablanca",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2000,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Royal",
+        "ville": "Rabat",
+        "categorie": "Cinéma",
+        "statut": "Classement",
+        "annee": 2000,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Palais de Forbès",
+        "ville": "Tanger",
+        "categorie": "Palais",
+        "statut": "Classement",
+        "annee": 2000,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "La Grande Mosquée",
+        "ville": "Chefchaouen",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 2000,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Ecole Prince de l’Atlas à Azrou",
+        "ville": "Azrou",
+        "categorie": "Ecole",
+        "statut": "Classement",
+        "annee": 2000,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Tour de Martil",
+        "ville": "Tétouan",
+        "categorie": "Tour",
+        "statut": "Classement",
+        "annee": 2001,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Site Lexus et les zones qui l'entourent",
+        "ville": "Laarache",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2001,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Jardin Boujloud (Jnan Sbil)",
+        "ville": "Fes",
+        "categorie": "Jardin",
+        "statut": "Classement",
+        "annee": 2001,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Site de Riga",
+        "ville": "Kénitra",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2001,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site de Tamoussida et les aisances qui l’entourent",
+        "ville": "Kénitra",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2001,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Palais d’Exposition",
+        "ville": "Casablanca",
+        "categorie": "Palais",
+        "statut": "Inscription",
+        "annee": 2003,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Ronde",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2003,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Assayag",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2003,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Nouzhat Hassan",
+        "ville": "Rabat",
+        "categorie": "Jardin",
+        "statut": "Classement",
+        "annee": 2003,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Les Jardins Exotiques de Bouknadel",
+        "ville": "Salé",
+        "categorie": "Jardin",
+        "statut": "Classement",
+        "annee": 2003,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôpital 20 août",
+        "ville": "Casablanca",
+        "categorie": "Hôpital",
+        "statut": "Inscription",
+        "annee": 2004,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Ecole Al Azhar",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2004,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Jardin Bélvèdère",
+        "ville": "Rabat",
+        "categorie": "Jardin",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "École Guessous",
+        "ville": "Rabat",
+        "categorie": "École",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôtel Ville France",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "L’horloge murale de Kénitra",
+        "ville": "Kénitra",
+        "categorie": "Horloge",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "L’ancienne Médina de Bejaâd",
+        "ville": "Abijaad",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Béni Mellal - Khénifra"
+    },
+    {
+        "nom": "Palais Ait Benhadou",
+        "ville": "Ouerzazat",
+        "categorie": "Palais",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Jardin ‘’Ibrahim Roudani’’",
+        "ville": "Taroudant",
+        "categorie": "Jardin",
+        "statut": "Classement",
+        "annee": 2004,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Sony",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2005,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Hôtel continental",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 2005,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Kurssal Français",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Classement",
+        "annee": 2005,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Site Tamouda",
+        "ville": "Tétouan",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2005,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Forteresse al-Fath",
+        "ville": "Laarache",
+        "categorie": "Forteresse",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Ecole Chaouki",
+        "ville": "Kénitra",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Cinéma Palace",
+        "ville": "Kénitra",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Les Aqueducs",
+        "ville": "Kénitra",
+        "categorie": "Pont",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Villa Rouge",
+        "ville": "Kénitra",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Villa Deux",
+        "ville": "Kénitra",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Villa Morély II",
+        "ville": "Kénitra",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Voile Gautier",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Vergne et Fédide",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Compagnie de Navigation Paquet",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Compagnie algérienne",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment CastellanoI",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment 13 rue Maâmora",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment S.I.A.L",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Régie Tabac",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôtel Europe",
+        "ville": "Kénitra",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôtel Alégrée",
+        "ville": "Kénitra",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôtel La Rotonde",
+        "ville": "Kénitra",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment de la commune de Maamora",
+        "ville": "Kénitra",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Bank Al-Maghrib",
+        "ville": "Kénitra",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Hôtel Majestic",
+        "ville": "Casablanca",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Clinique « Dubois Roquebert »",
+        "ville": "Rabat",
+        "categorie": "Hôpital",
+        "statut": "Inscription",
+        "annee": 2006,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "La zaouia Taghia",
+        "ville": "Settat",
+        "categorie": "Ecole",
+        "statut": "Classement",
+        "annee": 2006,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Immeuble Dal al Achjar",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Dox Monopolio",
+        "ville": "Tanger",
+        "categorie": "Usine",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Village touristique \"Cabro Negro\"",
+        "ville": "Tétouan",
+        "categorie": "Village",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Dar Makhzn, connue sous le nom de Comandacia",
+        "ville": "Laarache",
+        "categorie": "Dar",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "La tour des Juifs",
+        "ville": "Laarache",
+        "categorie": "Tour",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Bank Al-Maghrib",
+        "ville": "Laarache",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bab Kasbah",
+        "ville": "Laarache",
+        "categorie": "Bab",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Forteresse Annasr, connue sous le nom de \"La Tour de la Cigogne\"",
+        "ville": "Laarache",
+        "categorie": "Forteresse",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Les vestiges archéologiques du Hammam Aghmate",
+        "ville": "Al Haouz",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2007,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Bâtiment de l'institut Moulay El-Mehdi",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2009,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment du parlement",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Immeuble Piot",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Le Bâtiment contenant la Pharmacie de la Renaissance",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment qui contenait auparavant le siège du Ministère de la Communication",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Café La Comédie",
+        "ville": "Rabat",
+        "categorie": "Café",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment contenant le magasin Objet d’art de Marrakech",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Benguita 1",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Siège de la Banque Marocaine du Commerce Extérieur",
+        "ville": "Rabat",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment contenant la Café Hawaii",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment de l’Ecole Aljiran (Bâtiment d’Attijari Wafa Bank)",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment de la Banque Marocaine pour le Commerce et l’Industrie",
+        "ville": "Rabat",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Café les Ambassadeurs",
+        "ville": "Rabat",
+        "categorie": "Café",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Siemens",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Bank Al-Maghrib",
+        "ville": "Rabat",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment de l’agence Maroc Telecom Chèques Postaux",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment contenant le magasin Au Derby",
+        "ville": "Rabat",
+        "categorie": "Magasin",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment contenant l’hôtel Palema",
+        "ville": "Rabat",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment contenant l’hôtel Berlin",
+        "ville": "Rabat",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Le Bâtiment contenant l’hôtel Terminus",
+        "ville": "Rabat",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Avril",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Bâtiment Benguita 2",
+        "ville": "Rabat",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Site Dcheira",
+        "ville": "Témara",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2011,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Usine Jouillard",
+        "ville": "Casablanca",
+        "categorie": "Usine",
+        "statut": "Inscription",
+        "annee": 2012,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site de la Dune et des Palais de Figuig",
+        "ville": "Fguig",
+        "categorie": "Palais",
+        "statut": "Classement",
+        "annee": 2012,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment historique dans la commune de Targuist",
+        "ville": "Al Hoceïma",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2013,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "L’Église Orthodoxe Russe",
+        "ville": "Casablanca",
+        "categorie": "Eglise",
+        "statut": "Inscription",
+        "annee": 2013,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site Thazatta",
+        "ville": "Nador",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2014,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Villa Versano",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2014,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Liberté",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2014,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Place du Rif",
+        "ville": "Al Hoceïma",
+        "categorie": "Place",
+        "statut": "Classement",
+        "annee": 2014,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Kasbah d'Imsouane",
+        "ville": "Guercif",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 2014,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Cité Anacci",
+        "ville": "Tétouan",
+        "categorie": "Cité",
+        "statut": "Inscription",
+        "annee": 2015,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de l’Église Italique Christ Roi",
+        "ville": "Casablanca",
+        "categorie": "Eglise",
+        "statut": "Inscription",
+        "annee": 2015,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment \"Amram\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Ecole Oum al-Banin",
+        "ville": "Tanger",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de Cinéma Mauritania",
+        "ville": "Tanger",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de la Croix",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Site Jnane Hessar",
+        "ville": "Tétouan",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Site Aghmate",
+        "ville": "Al Haouz",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Kasbah Itta d’Inzegan",
+        "ville": "Inzeganne",
+        "categorie": "Kasbah",
+        "statut": "Inscription",
+        "annee": 2016,
+        "region": "Souss - Massa"
+    },
+    {
+        "nom": "Bâtiment Cuba",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Mozi",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Site archéologique Al Mazama",
+        "ville": "Al Hoceïma",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment du Club Maritime",
+        "ville": "Nador",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Réservoir El-Aroui",
+        "ville": "El-Aroui",
+        "categorie": "Réservoir",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Une des maisons de la compagnie Espagnole de reconstruction (El-Aroui)",
+        "ville": "El-Aroui",
+        "categorie": "Maison",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Médina de Salé",
+        "ville": "Salé",
+        "categorie": "Médina",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "La Tour Des Almohades",
+        "ville": "Safi",
+        "categorie": "Tour",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Aassli Bou Kerch",
+        "ville": "Smara",
+        "categorie": "Ecriture",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "El Gaiz Lakbir",
+        "ville": "Smara",
+        "categorie": "Ksar",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Wadiat Drarii",
+        "ville": "Smara",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Rbib Lamghader",
+        "ville": "Smara",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Laghchiouate",
+        "ville": "Smara",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Mirane",
+        "ville": "Smara",
+        "categorie": "Ecriture",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Tazoua",
+        "ville": "Smara",
+        "categorie": "Dar",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Aassli Errich",
+        "ville": "Smara",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Site de Sidi Harthi",
+        "ville": "Smara",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Site de Jrifia Edmiri Lghardak",
+        "ville": "Smara",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Site Aassli Dey",
+        "ville": "Smara",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Site de Rbib Elhouach",
+        "ville": "Smara",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Site de Lama El Aassli",
+        "ville": "Smara",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2017,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Ensemble de la protection légale à Marrakech 21",
+        "ville": "Marrakech",
+        "categorie": "Loi",
+        "statut": "Classement",
+        "annee": 2017,
+        "region": "Marrakech - Safi"
+    },
+    {
+        "nom": "Site de Sijilmassa",
+        "ville": "Rissani",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2017,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Golf de la ville de Tanger",
+        "ville": "Tanger",
+        "categorie": "Golf",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Théâtre Cervantes",
+        "ville": "Tanger",
+        "categorie": "Théâtre",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Msala",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Mira Monte \"Mazal\"",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Mebrouka",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa el-Bahia",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de l'ancien siège du journal \"Diario Espana\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Rozas",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Immeuble Victoria 4",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Immeuble Frères Wakrim",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Rosa",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment du consulat de l'Angleterre anciennement",
+        "ville": "Tanger",
+        "categorie": "Consulat",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Harris",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Palais Moulay Hafid \"Palais des institutions italiennes\"",
+        "ville": "Tanger",
+        "categorie": "Palais",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Dar Salaf",
+        "ville": "Tanger",
+        "categorie": "Dar",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Welcome",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Villa Amana",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Immeuble \"les Sables d'Olonne\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Immeubles Ben Lebas et Ben Dehane \"Lalaurie\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment \"Vienna\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment dans la rue Amérique Latine",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment \"March 2 bis\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Ecole Berchet",
+        "ville": "Tanger",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Dar Niaba",
+        "ville": "Tanger",
+        "categorie": "Dar",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de la délégation",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de la Légation Américaine",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Café Hafa",
+        "ville": "Tanger",
+        "categorie": "Café",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Villa numéro 42",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Phare du Cap Spartel",
+        "ville": "Tanger",
+        "categorie": "Phare",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de l'hôtel El-Minzah",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment du lycée Regnault",
+        "ville": "Tanger",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de l'Eglise Espagnole",
+        "ville": "Tanger",
+        "categorie": "Eglise",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Plaza de Toros",
+        "ville": "Tanger",
+        "categorie": "Palais",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de l'Eglise française Jean d'Arc",
+        "ville": "Tanger",
+        "categorie": "Eglise",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Toledano 10",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Toledano 11",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Emilia 2",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Conchita",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Bendrihem",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Cabrera",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Messoudi",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Florence",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Kassita ",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Berobidad Jimenez",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Marinko",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Bereka",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment de l'hôtel Place Velasquez ",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Philaça 1",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Philaça 2",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Marie",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Ben Ayad ",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Nardo",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Elize 3",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Villa S.M.D.",
+        "ville": "Tanger",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Paris Pic",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Aero Bella",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": " Bâtiment Mac",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Mercedes",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Valérique",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Belle Vue",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment \"Marie Angel\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment \"SMI\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment \"Maillon\"",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Emilia VII",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Zahrate",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Missilia",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Alice",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Layla",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Guadalupe 1",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Azucena",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Tétouan 3",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Benchton 1",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Nelly 1",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment le site ",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Asessina Lobe",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Macro",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Caron",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Commercial",
+        "ville": "Tanger",
+        "categorie": "Magasin",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Rembrandt",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Rentestica 9 titra foncier G/4246 (boulevard Salah Din el Ayoubi)",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment n°96 (boulevard Salah Din el Ayoubi)",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment n°106 (boulevard Salah Din el Ayoubi)",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment n°63 (boulevard Salah Din el Ayoubi)",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment n°65 (boulevard Salah Din el Ayoubi)",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment n°71 (boulevard Salah Din el Ayoubi)",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Pension Miami",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Pension Madrid",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Kasbah e Ghailan",
+        "ville": "Tanger",
+        "categorie": "Kasbah",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Bank Al-Maghrib",
+        "ville": "Oujda",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment du Palais de la Justice (Cour de Remboursement)",
+        "ville": "Oujda",
+        "categorie": "Tribunal",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment de la bibliothèque Chrif El-Idrissi",
+        "ville": "Oujda",
+        "categorie": "Bibliothèque",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment de l'Eglise Catholique",
+        "ville": "Oujda",
+        "categorie": "Eglise",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment de Cinéma Fox",
+        "ville": "Oujda",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment du Siège de la municipalité",
+        "ville": "Oujda",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment du Siège de la poste",
+        "ville": "Oujda",
+        "categorie": "Poste",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment de la gare",
+        "ville": "Oujda",
+        "categorie": "Gare",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment de l'hôpital Farabi",
+        "ville": "Oujda",
+        "categorie": "Hôpital",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Bâtiment du siège du Commandement Militaire Suprême",
+        "ville": "Oujda",
+        "categorie": "Militaire",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Hammam Jarda",
+        "ville": "Oujda",
+        "categorie": "Hammam",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Ecole Sidi Ziane",
+        "ville": "Oujda",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Mosquée el Bacha",
+        "ville": "Oujda",
+        "categorie": "Mosquée",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Ancienne gare : Méditérrannée Niger",
+        "ville": "Oujda",
+        "categorie": "Gare",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "Tribunal d'Affaires Familiales",
+        "ville": "Nador",
+        "categorie": "Tribunal",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "L'Oriental"
+    },
+    {
+        "nom": "La Kasbah du port de Mehdia et sa mosquée",
+        "ville": "Kénitra",
+        "categorie": "Kasbah",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Rabat - Salé - Kénitra"
+    },
+    {
+        "nom": "Mosquée Hassan II",
+        "ville": "Casablanca",
+        "categorie": "Mosquée",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa avenir Mers Sultan",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "L’Aquarium",
+        "ville": "Casablanca",
+        "categorie": "Aquarium",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Le Parc Murdoch",
+        "ville": "Casablanca",
+        "categorie": "Jardin",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Les Abbatoires Communaux Hay Mohamadi",
+        "ville": "Casablanca",
+        "categorie": "Abbatoires",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Violetta",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa les Tourelles",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Suissa",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Rouge",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Église « Sacré coeur»",
+        "ville": "Casablanca",
+        "categorie": "Église",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "La poste",
+        "ville": "Casablanca",
+        "categorie": "Poste",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "La Trésorerie Régionale",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Siège de la Wilaya du Grand Casablanca",
+        "ville": "Casablanca",
+        "categorie": "Siège",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Siège du Palais de la Justice",
+        "ville": "Casablanca",
+        "categorie": "Tribunal",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Siège de la Banque Commerciale du Maroc",
+        "ville": "Casablanca",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Siège de Bank Al-Maghrib",
+        "ville": "Casablanca",
+        "categorie": "Banque",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Siège de la commune Mechouar",
+        "ville": "Casablanca",
+        "categorie": "Siège",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Marché Central",
+        "ville": "Casablanca",
+        "categorie": "Marché",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Maret",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble El Glaoui",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Maroc Soir",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Hôtel Oualili",
+        "ville": "Casablanca",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Hôtel Excelsior",
+        "ville": "Casablanca",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Compagnie du Tabac",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom de Comptoir métallurgique",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Poste d’El Habbous",
+        "ville": "Casablanca",
+        "categorie": "Poste",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Le Département Militaire",
+        "ville": "Casablanca",
+        "categorie": "Militaire",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Quartier Bousbir",
+        "ville": "Casablanca",
+        "categorie": "Quartier",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Lycée Khnata bent Bakkar",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Lycée Khawarizmi",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Lycée Ibn Toumert",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Collège El Kastalani",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Tazi",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Les Studios",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Hôtel Transatlantique",
+        "ville": "Casablanca",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Lycée Mohammed V",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Shell",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Ben Dahan",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Immeuble au titre foncier 3963/c",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble Neptune",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’immeuble La Princière",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Pharmacie Centrale",
+        "ville": "Casablanca",
+        "categorie": "Pharmacie",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Bonnici",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Immeuble Colmar",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Charlot",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Crédit du Maroc numéro 4",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment immeuble Al-Mahatta",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Le bien nommé Marcel et le bien nommé Mohamed Ben Laarbi Benkirane",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "L’Ancienne Médina de Casablanca",
+        "ville": "Casablanca",
+        "categorie": "Médina",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment connu sous le nom d’Alexandre",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Abc",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Terrain Vélodrome",
+        "ville": "Casablanca",
+        "categorie": "Zone",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment de la Nouvelle Compagnie des Imprimeries",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Garage Volvo",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Atlas",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Mamounia",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Lux",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Verdun",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Saada",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Kawakib",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Polio",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Empire",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Opéra",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma Impérial",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Cinéma l’Arc",
+        "ville": "Casablanca",
+        "categorie": "Cinéma",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Nochi 4",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Grand hôtel",
+        "ville": "Casablanca",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Ida Jina",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Och",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "J . Bâtiment Parrain",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment de la gare routière",
+        "ville": "Casablanca",
+        "categorie": "Gare",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment du quartier cosuma ouvriers",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Rosa",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment de la place de la course de chevaux",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Quartier industriel Sousika",
+        "ville": "Casablanca",
+        "categorie": "Quartier",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "École Augustin Sourzac",
+        "ville": "Casablanca",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Garage Renault",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Garage Fiat",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Garage Coli",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Garage Royal",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Garage Marcel Rayroux",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Bagatelle",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Pinto",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Alami Souissi",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Figues",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site archéologique Zili",
+        "ville": "Tanger",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "La Grande Mosquée",
+        "ville": "Tanger",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Mosquée des Aissaoua",
+        "ville": "Tanger",
+        "categorie": "Mosquée",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bab Bhar",
+        "ville": "Tanger",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Le ruisseau public de rue Siaghine ",
+        "ville": "Tanger",
+        "categorie": "Fleuve",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bab Dar Niaba",
+        "ville": "Tanger",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Palais York Castel",
+        "ville": "Tanger",
+        "categorie": "Palais",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Tour de rue Sania",
+        "ville": "Tanger",
+        "categorie": "Tour",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bab Dar el-Baroud",
+        "ville": "Tanger",
+        "categorie": "Bab",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Panorama de la roche Sidi Aamar",
+        "ville": "Tanger",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Place de la Kasbah de Tanger et environs",
+        "ville": "Tanger",
+        "categorie": "Place",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Renchaussen",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Hôtel Excelsior",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Hôtel Cécille",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Hôtel Valencia",
+        "ville": "Tanger",
+        "categorie": "Hôtel",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bâtiment Estado espagnol 14",
+        "ville": "Tanger",
+        "categorie": "Bâtiment",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "L’ancienne médina de Taza",
+        "ville": "Taza",
+        "categorie": "Médina",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Fès - Meknès"
+    },
+    {
+        "nom": "Murailles de la ville de Mazagan",
+        "ville": "El Jadida",
+        "categorie": "Muraille",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "L’ancienne salle des armes à Mazagan",
+        "ville": "El Jadida",
+        "categorie": "Militaire",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "L’ancienne forteresse Portugaise à Mazagan",
+        "ville": "El Jadida",
+        "categorie": "Militaire",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "L’ancienne tour de Tit",
+        "ville": "El Jadida",
+        "categorie": "Militaire",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site et vestiges D’El Oualidia",
+        "ville": "El Jadida",
+        "categorie": "Archéologie",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Kasbah Amridil",
+        "ville": "Ouerzazat",
+        "categorie": "Kasbah",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Drâa - Tafilalet"
+    },
+    {
+        "nom": "Villa Georges",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site Nol Lumtah",
+        "ville": "Guelmim",
+        "categorie": "Nature",
+        "statut": "Classement",
+        "annee": 2018,
+        "region": "Guelmim - Oued Noun"
+    },
+    {
+        "nom": "Villa lotissement Mers Sultan",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Villa Nelly",
+        "ville": "Casablanca",
+        "categorie": "Villa",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Villa Jeanne Marie",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Les rossignols",
+        "ville": "Casablanca",
+        "categorie": "Bâtiment",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Garage Citroën",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Bâtiment Garage Palace Auto",
+        "ville": "Casablanca",
+        "categorie": "Garage",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "La gare aéronautique Tit-Méllil",
+        "ville": "Casablanca",
+        "categorie": "Gare",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Le complexe hôtelier hôtel du Maroc, hôtel de France et hôtel du Port",
+        "ville": "El Jadida",
+        "categorie": "Hôtel",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Casablanca - Settat"
+    },
+    {
+        "nom": "Site de l’équitation",
+        "ville": "Smara",
+        "categorie": "Equitation",
+        "statut": "Inscription",
+        "annee": 2018,
+        "region": "Laâyoune - Sakia El Hamra"
+    },
+    {
+        "nom": "Mosquée Targha",
+        "ville": "Chefchaouen",
+        "categorie": "Mosquée",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Dar Benjelloun",
+        "ville": "Ksar E kebir",
+        "categorie": "Dar",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Darih Moulay Ali Boughalleb",
+        "ville": "Ksar E kebir",
+        "categorie": "Darih",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Ecole Ibn Khaldoun",
+        "ville": "Ksar E kebir",
+        "categorie": "Ecole",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Sour Mouahadi",
+        "ville": "Ksar E kebir",
+        "categorie": "Muraille",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Tanger-Tétouan-Al Hoceïma"
+    },
+    {
+        "nom": "Bouleriah",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Khnifissa",
+        "ville": "Aousserd ",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Chaïf ould Attiâ.",
+        "ville": "Aousserd ",
+        "categorie": "Tombeau",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Oued Chaïf",
+        "ville": "Aousserd ",
+        "categorie": "Fleuve",
+        "statut": "Inscription",
+        "annee": 2019,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Dakhrat Oum rawakin",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2020,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "La dune blanche",
+        "ville": "Oued Ed-Dahab",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2020,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Atrouk",
+        "ville": "Oued Ed-Dahab",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2020,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Glip zaafik",
+        "ville": "Aousserd ",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Le site des rassemblements funéraires au nord de Jmiîa",
+        "ville": "Aousserd ",
+        "categorie": "Cimetière",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Ircha Amer",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Hajra Oulia",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Timchit Hib Allah",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Mades",
+        "ville": "Aousserd ",
+        "categorie": "Archéologie",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "El Koursia",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Tioutsen",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Ezziâar",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Aguidsen",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Leglat",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "La «sebkha» d’Imlili",
+        "ville": "Oued Ed-Dahab",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2021,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Site Reg Lahmer",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Rohkma",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Al-Shiarat 1",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Al-Shiarat 2",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Oum Al Rawakin 2",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Amersite",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Amzizat Saâdane gharb Grart Ouchfkt",
+        "ville": "Aousserd ",
+        "categorie": "Autre",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Site Taleklaket 1",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Site Taleklaket 2",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Site Taleklaket 3",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Site Khashm Al Aan",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Site Oum Lahyad",
+        "ville": "Aousserd ",
+        "categorie": "Nature",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    },
+    {
+        "nom": "Murailles et Tours de la caserne militaire »Alekhandro Farbissio »",
+        "ville": "Oued Ed-Dahab",
+        "categorie": "Muraille",
+        "statut": "Inscription",
+        "annee": 2022,
+        "region": "Dakhla - Oued Ed Dahab"
+    }
+]
+};
+
 
 const COULEURS = {
   vert:  '#1B4A3D',
@@ -1015,110 +6759,108 @@ const COULEURS = {
   t6: 'rgba(180,115,107,0.25)',
 };
 
-// Données répertoire (les 845 sites — on en génère un représentatif)
-const VILLES_DATA = [
-  { ville:'Marrakech', total:187, classes:72, inscrits:115, region:'Marrakech-Safi' },
-  { ville:'Fès',       total:164, classes:68, inscrits:96,  region:'Fès-Meknès' },
-  { ville:'Meknès',    total:98,  classes:39, inscrits:59,  region:'Fès-Meknès' },
-  { ville:'Rabat',     total:86,  classes:31, inscrits:55,  region:'Rabat-Salé-Kénitra' },
-  { ville:'Essaouira', total:74,  classes:24, inscrits:50,  region:'Marrakech-Safi' },
-  { ville:'Tétouan',   total:52,  classes:18, inscrits:34,  region:'Tanger-Tétouan-Al Hoceïma' },
-  { ville:'Volubilis', total:41,  classes:25, inscrits:16,  region:'Fès-Meknès' },
-  { ville:'Aït Benhaddou', total:38, classes:20, inscrits:18, region:'Drâa-Tafilalet' },
-  { ville:'Ouarzazate', total:32, classes:10, inscrits:22,  region:'Drâa-Tafilalet' },
-  { ville:'Chefchaouen', total:28, classes:9, inscrits:19,  region:'Tanger-Tétouan-Al Hoceïma' },
-  { ville:'Casablanca', total:25, classes:7, inscrits:18,   region:'Casablanca-Settat' },
-  { ville:'El Jadida',  total:22, classes:11, inscrits:11,  region:'Casablanca-Settat' },
-  { ville:'Agadir',     total:18, classes:5, inscrits:13,   region:'Souss-Massa' },
-  { ville:'Tanger',     total:16, classes:6, inscrits:10,   region:'Tanger-Tétouan-Al Hoceïma' },
-  { ville:'Tinghir',    total:14, classes:6, inscrits:8,    region:'Drâa-Tafilalet' },
-  { ville:'Larache',    total:12, classes:5, inscrits:7,    region:'Tanger-Tétouan-Al Hoceïma' },
-  { ville:'Erfoud',     total:10, classes:3, inscrits:7,    region:'Drâa-Tafilalet' },
-  { ville:'Tiznit',     total:9,  classes:3, inscrits:6,    region:'Souss-Massa' },
-  { ville:'Azemmour',   total:8,  classes:3, inscrits:5,    region:'Casablanca-Settat' },
-  { ville:'Asilah',     total:7,  classes:2, inscrits:5,    region:'Tanger-Tétouan-Al Hoceïma' },
-  { ville:'Ifrane',     total:6,  classes:2, inscrits:4,    region:'Fès-Meknès' },
-  { ville:'Beni Mellal',total:5,  classes:1, inscrits:4,    region:'Béni Mellal-Khénifra' },
-  { ville:'Khenifra',   total:4,  classes:1, inscrits:3,    region:'Béni Mellal-Khénifra' },
-  { ville:'Guelmim',    total:4,  classes:1, inscrits:3,    region:'Guelmim-Oued Noun' },
-  { ville:'Safi',       total:4,  classes:2, inscrits:2,    region:'Marrakech-Safi' },
-  { ville:'Dakhla',     total:3,  classes:1, inscrits:2,    region:'Dakhla-Oued Ed-Dahab' },
-  { ville:'Taroudant',  total:3,  classes:1, inscrits:2,    region:'Souss-Massa' },
-  { ville:'Midelt',     total:3,  classes:0, inscrits:3,    region:'Drâa-Tafilalet' },
-  { ville:'Zagora',     total:2,  classes:1, inscrits:1,    region:'Drâa-Tafilalet' },
-  { ville:'Laâyoune',   total:2,  classes:0, inscrits:2,    region:'Laâyoune-Sakia El Hamra' },
-  // Villes supplémentaires pour atteindre 47
-  ...Array.from({length:17}, (_, i) => ({
-    ville: ['Oujda','Berkane','Nador','Séfrou','Béni Mellal','Ksar el-Kébir','Salé','Témara','Mohammedia','Settat','Berrechid','Khémisset','Khénifra','Imilchil','Merzouga','Rich','Goulmima'][i],
-    total: Math.max(1, Math.round(Math.random()*6+1)),
-    classes: Math.round(Math.random()*3),
-    inscrits: 0,
-    region:'Autre'
-  })).map(v=>({...v, inscrits: v.total - v.classes}))
-];
+const VILLES_DATA = DATA.VILLES_DATA;
+const CATEGORIES = DATA.CATEGORIES;
+const ANNEES = DATA.ANNEES;
+const CUMUL = DATA.CUMUL;
+const AJOUTS = DATA.AJOUTS;
+const REPERTOIRE_FULL = DATA.REPERTOIRE_FULL;
 
-const CATEGORIES = [
-  { nom:'Architectural', count:248, classes:98, color:'rgba(27,74,61,0.82)' },
-  { nom:'Archéologique',  count:196, classes:82, color:'rgba(180,115,107,0.82)' },
-  { nom:'Historique',    count:172, classes:62, color:'rgba(27,74,61,0.5)' },
-  { nom:'Religieux',     count:134, classes:44, color:'rgba(180,115,107,0.5)' },
-  { nom:'Paysager',      count:58,  classes:16, color:'rgba(27,74,61,0.28)' },
-  { nom:'Urbain',        count:37,  classes:10, color:'rgba(180,115,107,0.3)' },
-];
+// DYNAMIC UI UPDATES
+const totalBiens = VILLES_DATA.reduce((sum, v) => sum + v.total, 0);
+const totalClasses = VILLES_DATA.reduce((sum, v) => sum + v.classes, 0);
+const totalInscrits = VILLES_DATA.reduce((sum, v) => sum + v.inscrits, 0);
+const pctClasses = (totalClasses / totalBiens * 100).toFixed(1);
+const pctInscrits = (totalInscrits / totalBiens * 100).toFixed(1);
+const nbVilles = VILLES_DATA.length;
+const nbCats = CATEGORIES.length;
 
-const ANNEES = [2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-const CUMUL  = [223,242,258,278,301,328,362,400,432,468,512,583,620,658,694,710,736,778,813,845];
-const AJOUTS = CUMUL.map((v,i) => i===0 ? 0 : v - CUMUL[i-1]);
+document.getElementById('header-stats').innerHTML = `
+  <div class="hstat"><span class="num">${totalBiens}</span><span class="lbl">Sites répertoriés</span></div>
+  <div class="hstat"><span class="num">${nbVilles}</span><span class="lbl">Villes couvertes</span></div>
+  <div class="hstat"><span class="num">${nbCats}</span><span class="lbl">Catégories</span></div>
+  <div class="hstat"><span class="num">${Math.max(...ANNEES)}</span><span class="lbl">Dernière mise à jour</span></div>
+`;
 
-// Répertoire complet
-const CATS = ['Architectural','Archéologique','Historique','Religieux','Paysager','Urbain'];
-const STATUTS = ['Classé','Inscrit'];
-const SITES_NOMS = [
-  'Palais El Badi','Bahia Palace','Koutoubia','Jemaa el-Fna','Médersa Ben Youssef',
-  'Borj Nord','Médersa Bou Inania','Mosquée al-Qarawiyyin','Mellah de Fès','Jnan Sbil',
-  'Mausolée Moulay Ismail','Bab Mansour','Heri es-Souani','Bassin de l\'Agdal','Place el-Hedim',
-  'Kasbah des Oudaïas','Mausolée Mohammed V','Tour Hassan','Chellah','Musée archéologique',
-  'Remparts d\'Essaouira','Sqala du port','Musée Sidi Mohammed','Borj Bab Marrakech','Mellah',
-  'Site de Volubilis','Bassin de Fès','Pont romain','Arche de Caracalla','Thermes de Volubilis',
-  'Ksar Aït Benhaddou','Kasbah d\'Amridil','Kasbah de Tifoultout','Ksour de Draa','Kasbah Taourirt',
-  'Médina de Chefchaouen','Place Uta el-Hammam','Mosquée Grande','Fontaine Ain Tissimane','Quartier al-Andalus',
-  'Cathédrale Saint-Pierre','Villa des arts','Mosquée Hassan II','Musée du Judaïsme marocain','Vieille Médina',
-  'Forteresse d\'El Jadida','Citerne portugaise','Eglise de l\'Assomption','Bastion de l\'Ange','Médina d\'El Jadida',
-  'Kasbah d\'Agadir Oufella','Secteur sauvegardé','Musée du Patrimoine amazigh','Porte de la vieille ville','Souk Aamara',
-  'Grottes d\'Hercule','Forêt diplomatique','Colline du Charf','Remparts phéniciens','Musée de la Légation américaine',
-  'Forteresse de Larache','Cimetière andalou','Ksar el-Kebir','Médina historique','Eglise espagnole',
-  'Musée de la Kasbah','Palais Mendoub','Palais Dar el-Makhzen','Bibliothèque générale','Tribunal de première instance',
-  'Tombe du roi Bocchus','Lac de Sidi Bourhaba','Dunes de l\'Erg Chebbi','Oasis de Figuig','Gorges du Todra',
-  'Oasis de Tafraout','Musée de Tiznit','Puits du patrimoine','Gravures rupestres de Draa','Tumulus d\'Harhoura',
-  'Site de Banasa','Nécropole de Rirha','Ruines de Sala Colonia','Site de Tamuda','Phare de Cap Spartel',
-  'Musée Bert Flint','Musée de Marrakech','Fondouk Chejra','Place de la Kissaria','Palais Dar el-Bacha',
-  'Mellah de Meknès','Synagogue Simon Attias','Cimetière juif de Meknès','Hôtel de Transatlantique','Prison de Meknès',
-  'Jardin de Bou Jeloud','Fontaine Nejjarine','Musée Batha','Palais Dar Jamai','Caravansérail Tetouani',
-  'Médina de Tétouan','Quartier andalou','Musée Ethnographique','Palais Royal de Tétouan','Remparts almohades',
-  'Aiguille d\'Ifrane','Sources de l\'oued Ifrane','Parc National Ifrane','Marché berbère','Eglise Notre-Dame',
-];
+document.getElementById('accueil-kpis').innerHTML = `
+  <div class="kpi">
+    <span class="k-label">Total des biens</span>
+    <span class="k-val">${totalBiens}</span>
+    <span class="k-sub">Biens patrimoniaux recensés</span>
+  </div>
+  <div class="kpi">
+    <span class="k-label">Biens classés</span>
+    <span class="k-val">${totalClasses}</span>
+    <span class="k-sub">Classement officiel actif</span>
+    <span class="k-badge badge-rose">${pctClasses} %</span>
+  </div>
+  <div class="kpi">
+    <span class="k-label">Sites inscrits</span>
+    <span class="k-val">${totalInscrits}</span>
+    <span class="k-sub">En cours d'inscription</span>
+    <span class="k-badge badge-green">${pctInscrits} %</span>
+  </div>
+  <div class="kpi">
+    <span class="k-label">Villes concernées</span>
+    <span class="k-val">${nbVilles}</span>
+    <span class="k-sub">Communes représentées</span>
+  </div>
+`;
 
-function getRandFrom(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+// Categories KPIs
+document.getElementById('cat-kpis').innerHTML = CATEGORIES.slice(0, 4).map(c => `
+  <div class="kpi">
+    <span class="k-label">${c.nom}</span>
+    <span class="k-val">${c.count}</span>
+    <span class="k-sub">Biens recensés</span>
+    <span class="k-badge badge-green">${(c.count/totalBiens*100).toFixed(1)} %</span>
+  </div>
+`).join('');
 
-const REPERTOIRE_FULL = [];
-let siteIdx = 0;
-VILLES_DATA.forEach(vd => {
-  for(let i=0; i<vd.total; i++){
-    const cat = getRandFrom(CATS);
-    const statut = Math.random() < (vd.classes/vd.total) ? 'Classé' : 'Inscrit';
-    const annee = 2005 + Math.floor(Math.random()*20);
-    const nomBase = SITES_NOMS[siteIdx % SITES_NOMS.length];
-    REPERTOIRE_FULL.push({
-      nom: nomBase + (i > 0 && SITES_NOMS.indexOf(nomBase) < SITES_NOMS.length - 1 ? '' : ' ' + (Math.floor(i/SITES_NOMS.length)+1 > 1 ? 'II' : '')),
-      ville: vd.ville,
-      categorie: cat,
-      statut: statut,
-      annee: annee,
-      region: vd.region
-    });
-    siteIdx++;
-  }
-});
+// Evol KPIs
+document.getElementById('evol-kpis').innerHTML = `
+  <div class="kpi">
+    <span class="k-label">Année de départ</span>
+    <span class="k-val">${Math.min(...ANNEES.filter(a=>a>0))}</span>
+    <span class="k-sub">Premier recensement</span>
+  </div>
+  <div class="kpi">
+    <span class="k-label">Croissance totale</span>
+    <span class="k-val">+${totalBiens}</span>
+    <span class="k-sub">Sites répertoriés</span>
+  </div>
+  <div class="kpi">
+    <span class="k-label">Moy. annuelle</span>
+    <span class="k-val">${Math.round(totalBiens / (Math.max(...ANNEES) - Math.min(...ANNEES.filter(a=>a>0))))}</span>
+    <span class="k-sub">Nouveaux biens par an</span>
+  </div>
+  <div class="kpi">
+    <span class="k-label">Meilleure année</span>
+    <span class="k-val">${ANNEES[AJOUTS.indexOf(Math.max(...AJOUTS))]}</span>
+    <span class="k-sub">+${Math.max(...AJOUTS)} biens</span>
+    <span class="k-badge badge-rose">Record</span>
+  </div>
+`;
+
+// Top 5 KPIs
+const top5 = VILLES_DATA.slice(0,5);
+document.getElementById('top5-kpis').innerHTML = top5.slice(0,3).map((v, i) => `
+  <div class="kpi">
+    <span class="k-label">${['🥇','🥈','🥉'][i]} ${v.ville}</span>
+    <span class="k-val">${v.total}</span>
+    <span class="k-sub">Sites patrimoniaux</span>
+    <span class="k-badge badge-${i%2===0?'rose':'green'}">${(v.total/totalBiens*100).toFixed(1)} % du total</span>
+  </div>
+`).join('');
+
+// Top 5 table
+document.getElementById('top5-tbody').innerHTML = top5.map((v, i) => `
+  <tr>
+    <td>${i+1}</td><td><strong>${v.ville}</strong></td><td>${v.total}</td><td>${v.classes}</td><td>${v.inscrits}</td>
+    <td><span class="tag tag-arch">${(v.classes/v.total*100).toFixed(1)} %</span></td>
+  </tr>
+`).join('');
+
 
 /* ═══════════════════════════════════════════════════
    NAVIGATION SPA
@@ -1161,7 +6903,6 @@ const tick  = { color:'#6b6560', font:{size:11} };
 /* ═══════════════════════════════════════════════════
    GRAPHIQUES — ACCUEIL
 ═══════════════════════════════════════════════════ */
-// 1. Catégorie (doughnut)
 new Chart(document.getElementById('chartCategorie'), {
   type: 'doughnut',
   data: {
@@ -1175,7 +6916,6 @@ new Chart(document.getElementById('chartCategorie'), {
   }
 });
 
-// 2. Villes bar (horizontal)
 const top10 = VILLES_DATA.slice(0,10);
 new Chart(document.getElementById('chartVilles'), {
   type: 'bar',
@@ -1192,7 +6932,6 @@ new Chart(document.getElementById('chartVilles'), {
   }
 });
 
-// 3. Évolution ligne
 new Chart(document.getElementById('chartEvolution'), {
   type: 'line',
   data: {
@@ -1206,27 +6945,6 @@ new Chart(document.getElementById('chartEvolution'), {
   }
 });
 
-// 4. Tourisme (scatter simulé)
-const tourismeData = ANNEES.map((an, i) => ({ x: CUMUL[i], y: Math.round(6 + (i*0.5) + Math.random()*2) }));
-new Chart(document.getElementById('chartTourisme'), {
-  type: 'scatter',
-  data: {
-    datasets: [{
-      label:'Millions de touristes', data: tourismeData,
-      backgroundColor: COULEURS.t2, pointRadius:6, pointHoverRadius:8
-    }]
-  },
-  options: { responsive:true, maintainAspectRatio:false,
-    scales: {
-      x: { grid, ticks:tick, title:{ display:true, text:'Nombre de biens', color:'#6b6560', font:{size:11} } },
-      y: { grid, ticks:tick, title:{ display:true, text:'Touristes (M)', color:'#6b6560', font:{size:11} } }
-    },
-    plugins:{ legend:{ display:false } }
-  }
-});
-
-// 5. Top 5 classés/inscrits
-const top5 = VILLES_DATA.slice(0,5);
 new Chart(document.getElementById('chartTop5'), {
   type: 'bar',
   data: {
@@ -1259,10 +6977,9 @@ new Chart(document.getElementById('chartVillesAll'), {
   }
 });
 
-// Progress bars
 const progContainer = document.getElementById('progressVilles');
 VILLES_DATA.slice(0,8).forEach(v => {
-  const pct = Math.round(v.classes/v.total*100);
+  const pct = v.total > 0 ? Math.round(v.classes/v.total*100) : 0;
   const rose = pct < 35;
   progContainer.innerHTML += `
     <div class="prog-item">
@@ -1271,18 +6988,21 @@ VILLES_DATA.slice(0,8).forEach(v => {
     </div>`;
 });
 
-// Régions radar
-const regions = [
-  { r:'Marrakech-Safi', v:265 }, { r:'Fès-Meknès', v:303 }, { r:'Rabat-Salé', v:86 },
-  { r:'Tanger-Tét.', v:108 }, { r:'Drâa-Tafilalet', v:59 }, { r:'Casablanca', v:47 },
-  { r:'Souss-Massa', v:27 }, { r:'Autres', v:24 }
-];
+// Group regions from real data
+const regionsCount = {};
+VILLES_DATA.forEach(v => {
+  if (v.region && v.region !== 'Inconnu') {
+    regionsCount[v.region] = (regionsCount[v.region] || 0) + v.total;
+  }
+});
+const regionsArr = Object.keys(regionsCount).map(r => ({ r, v: regionsCount[r] })).sort((a,b)=>b.v-a.v).slice(0,8);
+
 new Chart(document.getElementById('chartRegions'), {
   type: 'bar',
   data: {
-    labels: regions.map(r=>r.r),
-    datasets: [{ label:'Biens par région', data: regions.map(r=>r.v),
-      backgroundColor: regions.map((_,i) => i%2===0 ? COULEURS.t1 : COULEURS.t2), borderRadius:6 }]
+    labels: regionsArr.map(r=>r.r),
+    datasets: [{ label:'Biens par région', data: regionsArr.map(r=>r.v),
+      backgroundColor: regionsArr.map((_,i) => i%2===0 ? COULEURS.t1 : COULEURS.t2), borderRadius:6 }]
   },
   options: { responsive:true, maintainAspectRatio:false,
     scales: { x:{ grid:{display:false}, ticks:tick }, y:{ grid, ticks:tick } },
@@ -1355,61 +7075,11 @@ new Chart(document.getElementById('chartEvolCumul'), {
   }
 });
 
-new Chart(document.getElementById('chartEvolBars'), {
-  type: 'bar',
-  data: {
-    labels: ANNEES.slice(1),
-    datasets: [{
-      label:'Nouveaux biens', data: AJOUTS.slice(1),
-      backgroundColor: AJOUTS.slice(1).map(v => v >= 50 ? COULEURS.t1 : COULEURS.t3), borderRadius:5
-    }]
-  },
-  options: { responsive:true, maintainAspectRatio:false,
-    scales: { x:{ grid:{display:false}, ticks:tick }, y:{ grid, ticks:tick } },
-    plugins:{ legend:{ display:false } }
-  }
-});
 
 /* ═══════════════════════════════════════════════════
    GRAPHIQUES — TOP 5
 ═══════════════════════════════════════════════════ */
-// Radar
-new Chart(document.getElementById('chartTop5Radar'), {
-  type: 'radar',
-  data: {
-    labels: ['Architectural','Archéologique','Historique','Religieux','Paysager','Urbain'],
-    datasets: top5.map((v,i) => ({
-      label: v.ville,
-      data: CATEGORIES.map(c => Math.round(v.total * c.count/845 * (0.85+Math.random()*0.3))),
-      borderColor: [COULEURS.vert, COULEURS.terre, 'rgba(27,74,61,0.5)', 'rgba(180,115,107,0.5)', 'rgba(27,74,61,0.3)'][i],
-      backgroundColor: [COULEURS.vert, COULEURS.terre, 'rgba(27,74,61,0.5)', 'rgba(180,115,107,0.5)', 'rgba(27,74,61,0.3)'][i].replace(')', ',0.07)').replace('rgba','rgba'),
-      borderWidth:2, pointRadius:3
-    }))
-  },
-  options: { responsive:true, maintainAspectRatio:false,
-    scales:{ r:{ grid:{ color:'rgba(27,74,61,0.1)' }, pointLabels:{ font:{size:11}, color:'#6b6560' }, ticks:{ display:false } } },
-    plugins:{ legend:{ position:'bottom', labels:{padding:10, font:{size:11}} } }
-  }
-});
 
-// Cat par ville
-new Chart(document.getElementById('chartTop5Cat'), {
-  type: 'bar',
-  data: {
-    labels: top5.map(v=>v.ville),
-    datasets: CATEGORIES.map(c => ({
-      label: c.nom,
-      data: top5.map(v => Math.round(v.total * c.count/845 * (0.85+Math.random()*0.3))),
-      backgroundColor: c.color, borderRadius:3
-    }))
-  },
-  options: { responsive:true, maintainAspectRatio:false,
-    scales: { x:{ stacked:true, grid:{display:false}, ticks:tick }, y:{ stacked:true, grid, ticks:tick } },
-    plugins:{ legend:{ position:'bottom', labels:{padding:8, font:{size:10}} } }
-  }
-});
-
-// Évolution top5
 new Chart(document.getElementById('chartTop5Evol'), {
   type: 'line',
   data: {
@@ -1434,13 +7104,15 @@ let repoPage = 0;
 const repoPerPage = 20;
 let repoFiltered = [...REPERTOIRE_FULL];
 
-// Populate ville filter
 const villesUniq = [...new Set(VILLES_DATA.map(v=>v.ville))].sort();
 const villeFilter = document.getElementById('repoVilleFilter');
 villesUniq.forEach(v => { villeFilter.innerHTML += `<option value="${v}">${v}</option>`; });
 
+const catFilter = document.getElementById('repoCatFilter');
+CATEGORIES.forEach(c => { catFilter.innerHTML += `<option value="${c.nom}">${c.nom}</option>`; });
+
 function tagClass(cat) {
-  const map = { 'Architectural':'tag-arch', 'Archéologique':'tag-arch2', 'Historique':'tag-hist', 'Religieux':'tag-relig', 'Paysager':'tag-arch3', 'Urbain':'tag-arch3' };
+  const map = { 'Bâtiment':'tag-arch', 'Nature':'tag-arch2', 'Zone':'tag-hist', 'Muraille':'tag-relig', 'Villa':'tag-arch3', 'Hôtel':'tag-arch3' };
   return map[cat] || 'tag-arch';
 }
 
@@ -1470,14 +7142,13 @@ function renderRepoPage() {
       <td style="font-weight:500">${r.nom}</td>
       <td>${r.ville}</td>
       <td><span class="tag ${tagClass(r.categorie)}">${r.categorie}</span></td>
-      <td><span class="tag ${r.statut==='Classé'?'tag-arch':'tag-hist'}">${r.statut}</span></td>
-      <td>${r.annee}</td>
+      <td><span class="tag ${r.statut==='Classement'?'tag-arch':'tag-hist'}">${r.statut}</span></td>
+      <td>${r.annee > 0 ? r.annee : 'N/A'}</td>
     </tr>`).join('');
 
   document.getElementById('repoCount').textContent =
     `${repoFiltered.length} résultat${repoFiltered.length>1?'s':''} — Affichage ${start+1}–${Math.min(start+repoPerPage, repoFiltered.length)}`;
 
-  // Pagination
   const totalPages = Math.ceil(repoFiltered.length / repoPerPage);
   const pag = document.getElementById('repoPagination');
   pag.innerHTML = '';
@@ -1498,7 +7169,6 @@ document.getElementById('repoSearch').addEventListener('input', buildRepertoire)
 document.getElementById('repoVilleFilter').addEventListener('change', buildRepertoire);
 document.getElementById('repoCatFilter').addEventListener('change', buildRepertoire);
 
-// Init on load
 buildRepertoire();
 </script>
 </body>
